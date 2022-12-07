@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExtraController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Seller\StoreController;
 use App\Http\Controllers\Seller\BranchController;
@@ -19,6 +20,8 @@ Route::middleware(['auth:seller', 'hasStore'])->group(function(){
     Route::resource('branches', BranchController::class)->except('index');
     
     Route::resource('categories', CategoryController::class);
+
+    Route::resource('extras', ExtraController::class);
 
     Route::resource('products', ProductController::class);
     

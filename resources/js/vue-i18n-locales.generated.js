@@ -58,6 +58,11 @@ export default {
                 "create": "Create Product",
                 "update": "Update Product"
             },
+            "extra": {
+                "title": "Extras",
+                "create": "Create Extra",
+                "update": "Update Extra"
+            },
             "no_records": "No records to show",
             "size": "Size"
         }
@@ -120,6 +125,11 @@ export default {
                 "title": "Товары",
                 "create": "Создать продукт",
                 "update": "Обновить продукт"
+            },
+            "extra": {
+                "title": "Дополнительно",
+                "create": "Создать дополнительный",
+                "update": "Обновить экстра"
             },
             "no_records": "Нет записей для отображения",
             "size": "Размер"

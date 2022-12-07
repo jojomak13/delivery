@@ -24,6 +24,11 @@ class Store extends Model
         'work_time' => '{"from": "", "to": ""]'
     ];
 
+    public function extras(): HasMany
+    {
+        return $this->hasMany(Extra::class);
+    }
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);

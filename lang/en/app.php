@@ -58,6 +58,11 @@ return [
         'create' => 'Create Product',
         'update' => 'Update Product',
     ],
+    'extra' => [
+        'title' => 'Extras',
+        'create' => 'Create Extra',
+        'update' => 'Update Extra'
+    ],
     'no_records' => 'No records to show',
     'size' => 'Size',
 ];

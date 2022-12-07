@@ -28,6 +28,12 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function extras()
+    {
+        return $this->belongsToMany(Extra::class)
+            ->withTimestamps();
+    }
+
     public function updateImage($image)
     {
         Storage::disk('public')->delete($this->image);

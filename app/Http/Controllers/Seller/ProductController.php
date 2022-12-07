@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Seller;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Seller\Product\CreateProductRequest;
 use App\Http\Requests\Seller\Product\UpdateProductRequest;
+use App\Models\Extra;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -31,20 +32,26 @@ class ProductController extends Controller
     
     public function create()
     {
-        $categories = auth('seller')->user()->myStore->categories()->select('categories.id', 'name')->get();
+        $store = auth('seller')->user()->myStore;
+
+        $categories = $store->categories()->select('categories.id', 'name')->get();
+        $extras = Extra::where('store_id', $store->id)->select('id', 'name')->get();
 
         return Inertia::render('Seller/Products/Create', [
-            'categories' => $categories
+            'categories' => $categories,
+            'extras' => $extras,
         ]);
     }
 
     public function store(CreateProductRequest $request)
     {
         $store = auth('seller')->user()->myStore;
-        
+
         $product = $store->products()->create($request->validated());
 
         $product->updateImage($request->file('image'));
+
+        $product->extras()->sync($request->input('extra'));
 
         return redirect()->route('seller.products.index');
     }
@@ -55,11 +62,17 @@ class ProductController extends Controller
             return abort(404);
         }
 
-        $categories = auth('seller')->user()->myStore->categories()->select('categories.id', 'name')->get();
+        $product->load('extras:id');
+        
+        $store = auth('seller')->user()->myStore;
+
+        $categories = $store->categories()->select('categories.id', 'name')->get();
+        $extras = Extra::where('store_id', $store->id)->select('id', 'name')->get();
 
         return Inertia::render('Seller/Products/Edit', [
             'product' => $product,
-            'categories' => $categories
+            'categories' => $categories,
+            'extras' => $extras
         ]);
     }
 
@@ -70,6 +83,8 @@ class ProductController extends Controller
         unset($data['image']);
 
         $product->update($data);
+
+        $product->extras()->sync($request->input('extra'));
 
         if($request->hasFile('image'))
             $product->updateImage($request->file('image'));
