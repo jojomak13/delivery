@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('logo');
-            $table->json('work_time')->default(json_encode(['from' => '', 'to' => '']));
+            $table->json('work_time');
             $table->foreignId('type_id')
                 ->constrained('types')
                 ->cascadeOnUpdate()

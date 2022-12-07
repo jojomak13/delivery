@@ -14,6 +14,10 @@ class Product extends Model
 
     protected $appends = ['image_url'];
     
+    protected $casts = [
+        'size' => 'collection'
+    ];
+
     public function store()
     {
         return $this->belongsTo(Store::class);

@@ -16,6 +16,10 @@ class Branch extends Model
         'location' => 'json'
     ];
 
+    protected $attributes = [
+        'location' => '["lat": "", "long": ""]'
+    ];
+
     public function store() : BelongsTo
     {
         return $this->belongsTo(Store::class);

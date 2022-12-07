@@ -59,4 +59,5 @@ return [
         'update' => 'Update Product',
     ],
     'no_records' => 'No records to show',
+    'size' => 'Size',
 ];

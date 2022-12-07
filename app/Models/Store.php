@@ -20,6 +20,10 @@ class Store extends Model
         'work_time' => 'json',
     ];
 
+    protected $attributes = [
+        'work_time' => '{"from": "", "to": ""]'
+    ];
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);

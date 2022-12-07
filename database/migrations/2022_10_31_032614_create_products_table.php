@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->decimal('price', 6, 2);
+            $table->json('size');
             $table->string('image');
             $table->boolean('approved')->default(false);
             $table->boolean('available')->default(true);

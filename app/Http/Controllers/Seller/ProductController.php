@@ -41,7 +41,7 @@ class ProductController extends Controller
     public function store(CreateProductRequest $request)
     {
         $store = auth('seller')->user()->myStore;
-
+        
         $product = $store->products()->create($request->validated());
 
         $product->updateImage($request->file('image'));

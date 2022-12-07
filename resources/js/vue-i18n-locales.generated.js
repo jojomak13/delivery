@@ -58,7 +58,8 @@ export default {
                 "create": "Create Product",
                 "update": "Update Product"
             },
-            "no_records": "No records to show"
+            "no_records": "No records to show",
+            "size": "Size"
         }
     },
     "ru": {
@@ -120,7 +121,8 @@ export default {
                 "create": "Создать продукт",
                 "update": "Обновить продукт"
             },
-            "no_records": "Нет записей для отображения"
+            "no_records": "Нет записей для отображения",
+            "size": "Размер"
         }
     }
 }

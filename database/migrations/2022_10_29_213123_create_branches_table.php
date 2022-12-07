@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('address');
-            $table->json('location')->default(json_encode(['lat' => '', 'long' => '']));
+            $table->json('location');
             $table->decimal('delivery_cost', 6, 2);
             $table->tinyInteger('delivery_period');
             $table->foreignId('store_id')
