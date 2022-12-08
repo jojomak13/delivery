@@ -29,6 +29,11 @@ class Store extends Model
         return $this->hasMany(Extra::class);
     }
 
+    public function bundles(): HasMany
+    {
+        return $this->hasMany(Bundle::class);
+    }
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);

@@ -55,6 +55,7 @@ export default {
             },
             "product": {
                 "title": "Products",
+                "title_single": "Product",
                 "create": "Create Product",
                 "update": "Update Product"
             },
@@ -64,7 +65,13 @@ export default {
                 "update": "Update Extra"
             },
             "no_records": "No records to show",
-            "size": "Size"
+            "size": "Size",
+            "bundle": {
+                "title": "Bundles",
+                "create": "Create Bundle",
+                "update": "Update Bundle"
+            },
+            "allowed_items": "Allowed Products"
         }
     },
     "ru": {
@@ -123,6 +130,7 @@ export default {
             },
             "product": {
                 "title": "Товары",
+                "title_single": "Товар",
                 "create": "Создать продукт",
                 "update": "Обновить продукт"
             },
@@ -132,7 +140,13 @@ export default {
                 "update": "Обновить экстра"
             },
             "no_records": "Нет записей для отображения",
-            "size": "Размер"
+            "size": "Размер",
+            "bundle": {
+                "title": "Пакеты",
+                "create": "Создать пакет",
+                "update": "Обновление пакета"
+            },
+            "allowed_items": "Разрешенные продукты"
         }
     }
 }

@@ -55,6 +55,7 @@ return [
     ],
     'product' => [
         'title' => 'Products',
+        'title_single' => 'Product',
         'create' => 'Create Product',
         'update' => 'Update Product',
     ],
@@ -65,4 +66,10 @@ return [
     ],
     'no_records' => 'No records to show',
     'size' => 'Size',
+    'bundle' => [
+        'title' => 'Bundles',
+        'create' => 'Create Bundle',
+        'update' => 'Update Bundle'
+    ],
+    'allowed_items' => 'Allowed Products',
 ];

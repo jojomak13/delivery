@@ -8,6 +8,7 @@ use App\Http\Requests\Seller\Product\UpdateProductRequest;
 use App\Models\Extra;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class ProductController extends Controller
@@ -29,7 +30,7 @@ class ProductController extends Controller
             'products' => $products
         ]);
     }
-    
+
     public function create()
     {
         $store = auth('seller')->user()->myStore;
@@ -63,7 +64,7 @@ class ProductController extends Controller
         }
 
         $product->load('extras:id');
-        
+
         $store = auth('seller')->user()->myStore;
 
         $categories = $store->categories()->select('categories.id', 'name')->get();
@@ -91,15 +92,17 @@ class ProductController extends Controller
 
         return redirect()->route('seller.products.index');
     }
-    
+
     public function destroy(Product $product)
     {
         if(!auth('seller')->user()->myStore->products()->find($product->id)){
             return abort(404);
         }
-        
+
+        Storage::disk('public')->delete($product->image);
+
         $product->delete();
-        
+
         return redirect()->route('seller.products.index');
     }
 }

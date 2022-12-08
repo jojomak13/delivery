@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Seller;
 
+use App\Http\Controllers\Controller;
 use App\Models\Extra;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -35,7 +36,7 @@ class ExtraController extends Controller
         Extra::create([
             'store_id' => $store->id
         ] + $data);
-        
+
         return redirect()->route('seller.extras.index');
     }
 
@@ -62,7 +63,7 @@ class ExtraController extends Controller
         ]);
 
         $extra->update($request->only(['name', 'price']));
-        
+
         return redirect()->route('seller.extras.index');
     }
 
