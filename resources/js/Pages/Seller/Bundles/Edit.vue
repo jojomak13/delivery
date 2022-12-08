@@ -8,16 +8,19 @@ import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextArea from "@/Components/TextArea.vue";
 import SelectInput from "@/Components/SelectInput.vue";
+import 'vue-select/dist/vue-select.css';
+import VSelect from 'vue-select'
+import { Inertia } from '@inertiajs/inertia';
 
 const {t} = useI18n()
 
-const { bundle } = defineProps(['categories', 'bundle'])
+const { bundle } = defineProps(['categories', 'bundle', 'products'])
 
 const form = useForm({
     name: bundle.name,
     image: '',
     price: bundle.price,
-    products: [],
+    products: bundle.products.data,
     category_id: bundle.category_id,
     description: bundle.description,
     allowed_items: bundle.allowed_items,
@@ -29,11 +32,24 @@ const save = () => {
 }
 
 const newProduct = () => {
-    form.products.push({id: new Date().getTime(), name: '', price: 0})
+    form.products.push({id: new Date().getTime(), product: '', size: ''})
 }
 
 const removeProduct = (id) => {
     form.products = form.products.filter(el => el.id !== id)
+}
+
+const search = (search, loading) => {
+    loading(true)
+    if(search){
+        Inertia.get(route('seller.bundles.edit', bundle), {search}, {
+            preserveState: true,
+            replace: true,
+            onSuccess: () => loading(false)
+        })
+    } else {
+        loading(false)
+    }
 }
 </script>
 
@@ -126,14 +142,14 @@ const removeProduct = (id) => {
                         </svg>
                     </PrimaryButton>
                 </div>
-                <div class="flex space-x-2 items-center mb-2" v-for="item in form.products" :key="item.id">
-                    <div>
-                        <InputLabel :value="t('app.product.title_single')"/>
-                        <TextInput type="text" class="mt-1 block w-full" v-model="item.name"/>
+                <div class="flex space-x-2 items-center mb-2" v-for="(item, index) in form.products" :key="item.id">
+                    <div class="w-40">
+                        <InputLabel for="name" :value="t('app.product.title_single')" />
+                        <v-select class="block w-full" v-model="form.products[index].product" @search="search" label="name" :options="products"></v-select>
                     </div>
-                    <div>
-                        <InputLabel :value="t('app.price')"/>
-                        <TextInput type="number" step=".1" min="0" class="mt-1 block w-full" v-model="item.price"/>
+                    <div class="w-40">
+                        <InputLabel for="name" :value="t('app.size')" />
+                        <v-select :disabled="!form.products[index].id" :reduce="size => size.name" class="block w-full" v-model="form.products[index].size" label="name" :options="form.products[index].product.size"></v-select>
                     </div>
                     <button type="button" class="mt-5 text-red-400" @click="removeProduct(item.id)">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

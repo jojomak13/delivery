@@ -17,6 +17,7 @@ class Bundle extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class)
+            ->withPivot(['size'])
             ->withTimestamps();
     }
 

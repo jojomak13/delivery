@@ -30,7 +30,8 @@ class CreateBundleRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'description' => 'nullable|string|max:255',
             'allowed_items' => 'required|integer',
-            'available' => 'required|boolean'
+            'available' => 'required|boolean',
+            'products' => 'required|array|min:1',
         ];
     }
 
@@ -43,6 +44,9 @@ class CreateBundleRequest extends FormRequest
     {
         $this->merge([
             'available' => $this->available === '1'? true : false,
+            'products' => collect($this->products)
+                ->mapWithKeys(fn($el) => [$el['product']['id'] => ['size' => $el['size']]])
+                ->toarray()
         ]);
     }
 }

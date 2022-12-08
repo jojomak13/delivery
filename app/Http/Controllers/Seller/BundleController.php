@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Seller;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Seller\Bundle\CreateBundleRequest;
 use App\Http\Requests\Seller\Bundle\UpdateBundleRequest;
+use App\Http\Resources\Seller\Bundle\EditBundleResource;
 use App\Models\Bundle;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
@@ -34,14 +37,25 @@ class BundleController extends Controller
     /**
      * @return Response
      */
-    public function create(): Response
+    public function create(Request $request): Response
     {
         $store = auth('seller')->user()->myStore;
 
         $categories = $store->categories()->select('categories.id', 'name')->get();
 
+        $products = [];
+
+        if($request->has('search')){
+            $products = Product::query()
+                ->select('id', 'name', 'size')
+                ->where('store_id', $store->id)
+                ->where('name', 'like', '%' . $request->input('search') . '%')
+                ->get();
+        }
+
         return Inertia::render('Seller/Bundles/Create', [
-            'categories' => $categories
+            'categories' => $categories,
+            'products' => $products
         ]);
     }
 
@@ -51,12 +65,14 @@ class BundleController extends Controller
 
         $bundle = $store->bundles()->create($request->validated());
 
+        $bundle->products()->sync($request->input('products'));
+
         $bundle->updateImage($request->file('image'));
 
         return redirect()->route('seller.bundles.index');
     }
 
-    public function edit(Bundle $bundle)
+    public function edit(Request $request, Bundle $bundle)
     {
         abort_if(auth('seller')->user()->myStore->id !== $bundle->store_id, 404);
 
@@ -64,9 +80,20 @@ class BundleController extends Controller
 
         $categories = $store->categories()->select('categories.id', 'name')->get();
 
+        $products = [];
+
+        if($request->has('search')){
+            $products = Product::query()
+                ->select('id', 'name', 'size')
+                ->where('store_id', $store->id)
+                ->where('name', 'like', '%' . $request->input('search') . '%')
+                ->get();
+        }
+
         return Inertia::render('Seller/Bundles/Edit', [
             'categories' => $categories,
-            'bundle' => $bundle,
+            'bundle' => (new EditBundleResource($bundle))->toArray(null),
+            'products' => $products
         ]);
     }
 
@@ -78,7 +105,9 @@ class BundleController extends Controller
 
         unset($data['image']);
 
-        $bundle = $bundle->update($data);
+        $bundle->update($data);
+
+        $bundle->products()->sync($request->input('products'));
 
         if($request->hasFile('image'))
             $bundle->updateImage($request->file('image'));
