@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link as InertiaLink } from '@inertiajs/inertia-vue3';
 import {useI18n} from "vue-i18n";
 import Link from '@/Components/Link.vue'
-import pagination from '@/Components/pagination.vue'
+import pagination from '@/Components/Pagination.vue'
 import { Inertia } from '@inertiajs/inertia';
 
 const { t } = useI18n()
