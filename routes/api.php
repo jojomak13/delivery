@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('categories', [TypeController::class, 'index']);
+Route::get('categories/{type}', [TypeController::class, 'show']);
+
 Route::prefix('user')->group(function(){
     Route::prefix('auth')->group(function(){
         Route::post('login', [AuthController::class, 'login']);
@@ -26,9 +29,6 @@ Route::prefix('user')->group(function(){
         Route::prefix('auth')->group(function() {
             Route::post('logout', [AuthController::class, 'logout']);
         });
-
-        Route::get('categories', [TypeController::class, 'index']);
-        Route::get('categories/{type}', [TypeController::class, 'show']);
     });
 });
 
