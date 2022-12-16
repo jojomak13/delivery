@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Api;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class StoresResource extends ResourceCollection
+class StoreResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,7 +15,9 @@ class StoresResource extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'data' =>  StoreResource::collection($this->collection),
+            'name' => $this->name,
+            'logo' => $this->logo_url,
+            'work_time' => $this->work_time
         ];
     }
 }

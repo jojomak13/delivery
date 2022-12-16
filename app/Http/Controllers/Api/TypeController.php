@@ -26,15 +26,11 @@ class TypeController extends Controller
 
     public function show(Type $type)
     {
-        $stores = StoresResource::collection(Store::query()
+        return new StoresResource(Store::query()
                 ->where('type_id', $type->id)
                 ->where('approved', true)
                 ->select('stores.*', 'sellers.approved')
                 ->join('sellers', 'sellers.id', '=', 'stores.seller_id')
-                ->get());
-
-        return response()->json([
-            'data' => $stores,
-        ]);
+                ->simplePaginate(10));
     }
 }
