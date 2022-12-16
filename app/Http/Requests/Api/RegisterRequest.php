@@ -28,9 +28,11 @@ class RegisterRequest extends FormRequest
             'email' => 'required|email|max:255|unique:users',
             'phone' => 'required|string|max:255|unique:users',
             'password' => 'required|string|max:255|confirmed',
+            'location.name' => 'required',
             'location.lat' => 'required',
             'location.lng' => 'required',
-            'device_name' => 'required|string|max:255'
+            'device_name' => 'required|string|max:255',
+            'fc_token' => 'required|string',
         ];
     }
 }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->json('locations')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('fc_token');
             $table->rememberToken();
             $table->timestamps();
         });

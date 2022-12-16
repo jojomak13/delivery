@@ -23,15 +23,21 @@ class AuthController extends Controller
             'phone' => 'required|string|max:255',
             'password' => 'required|string|max:255',
             'device_name' => 'required|string|max:255',
+            'fc_token' => 'required|string',
         ]);
 
-        $user = User::where('phone', $request->input('phone'))->first();
+        $user = User::query()
+            ->where('phone', $request->input('phone'))
+            ->orWhere('email', $request->input('phone'))
+            ->first();
 
         if (!$user || !Hash::check($request->input('password'), $user->password)) {
             throw ValidationException::withMessages([
                 'phone' => [__('auth.failed')],
             ]);
         }
+
+        $user->update(['fc_token' => $request->input('fc_token')]);
 
         $token = $user->createToken($request->input('device_name'))->plainTextToken;
         return response()->json([
@@ -51,7 +57,8 @@ class AuthController extends Controller
         unset($data['password']);
 
         $user = User::create([
-            'password' => BCrypt($request->input('password'))
+            'password' => BCrypt($request->input('password')),
+            'locations' => [$request->input('location')]
         ] + $data);
 
         $token = $user->createToken($request->input('device_name'))->plainTextToken;
