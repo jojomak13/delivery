@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\StoreController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('categories', [TypeController::class, 'index']);
 Route::get('categories/{type}', [TypeController::class, 'show']);
+Route::get('store/{store}', [StoreController::class, 'index']);
 
 Route::prefix('user')->group(function(){
     Route::prefix('auth')->group(function(){
