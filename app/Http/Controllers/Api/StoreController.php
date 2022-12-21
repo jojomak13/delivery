@@ -29,4 +29,11 @@ class StoreController extends Controller
                 ->get())
         ]);
     }
+
+    public function show(Product $product)
+    {
+        $product->load('extras');
+
+        return response()->json($product);
+    }
 }
