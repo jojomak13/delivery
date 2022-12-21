@@ -28,6 +28,7 @@ class CreateBranchRequest extends FormRequest
             'phone' => 'required',
             'delivery_cost' => 'required',
             'delivery_period' => 'required',
+            'delivery_distance' => 'required',
             'address' => 'required|string|max:255',
             'location.lat' => 'required',
             'location.long' => 'required',

@@ -71,7 +71,8 @@ export default {
                 "create": "Create Bundle",
                 "update": "Update Bundle"
             },
-            "allowed_items": "Allowed Products"
+            "allowed_items": "Allowed Products",
+            "delivery_distance": "Delivery Distance"
         }
     },
     "ru": {
@@ -146,7 +147,8 @@ export default {
                 "create": "Создать пакет",
                 "update": "Обновление пакета"
             },
-            "allowed_items": "Разрешенные продукты"
+            "allowed_items": "Разрешенные продукты",
+            "delivery_distance": "Расстояние доставки"
         }
     }
 }

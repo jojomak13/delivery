@@ -28,6 +28,7 @@ class UpdateBranchRequest extends FormRequest
             'phone' => 'required',
             'delivery_cost' => 'required',
             'delivery_period' => 'required',
+            'delivery_distance' => 'required',
         ];
     }
 }

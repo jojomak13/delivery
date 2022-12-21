@@ -21,6 +21,7 @@ return new class extends Migration
             $table->json('location');
             $table->decimal('delivery_cost', 6, 2);
             $table->tinyInteger('delivery_period');
+            $table->tinyInteger('delivery_distance');
             $table->foreignId('store_id')
                     ->constrained('stores')
                     ->cascadeOnUpdate()

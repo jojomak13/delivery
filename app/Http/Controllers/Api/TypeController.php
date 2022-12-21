@@ -24,13 +24,19 @@ class TypeController extends Controller
         ]);
     }
 
-    public function show(Type $type)
+    public function show(Type $type, Request $request)
     {
+        $request->validate([
+            'lat' => 'required',
+            'long' => 'required'
+        ]);
+
         return new StoresResource(Store::query()
                 ->where('type_id', $type->id)
                 ->where('approved', true)
                 ->select('stores.*', 'sellers.approved')
                 ->join('sellers', 'sellers.id', '=', 'stores.seller_id')
+                ->with('branches')
                 ->simplePaginate(10));
     }
 }

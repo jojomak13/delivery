@@ -18,6 +18,7 @@ const form  = useForm({
     phone: branch.phone,
     delivery_cost: branch.delivery_cost,
     delivery_period: branch.delivery_period,
+    delivery_distance: branch.delivery_distance
 })
 
 const save = () => {
@@ -61,6 +62,12 @@ const save = () => {
                             <InputLabel for="delivery_period" :value="t('app.delivery_period')" />
                             <TextInput id="delivery_period" type="number" min="0" class="mt-1 block w-full" v-model="form.delivery_period" />
                             <InputError class="mt-2" :message="form.errors.delivery_period" />
+                        </div>
+
+                        <div class="md:col-span-1 mb-4">
+                            <InputLabel for="delivery_distance" :value="t('app.delivery_distance')" />
+                            <TextInput id="delivery_distance" type="number" min="0" class="mt-1 block w-full" v-model="form.delivery_distance" />
+                            <InputError class="mt-2" :message="form.errors.delivery_distance" />
                         </div>
 
                         <div class="md:col-span-2 mb-4">

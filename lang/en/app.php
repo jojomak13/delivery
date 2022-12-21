@@ -72,4 +72,5 @@ return [
         'update' => 'Update Bundle'
     ],
     'allowed_items' => 'Allowed Products',
+    'delivery_distance' => 'Delivery Distance'
 ];
