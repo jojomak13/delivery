@@ -14,7 +14,10 @@ class StoreResource extends JsonResource
      */
     public function toArray($request)
     {
-        $branches = $this->branches->filter(function ($branch){
+//        $branches = $this->branches->filter(function ($branch){
+//            return distance($branch->location['lat'], $branch->location['long'], request()->input('lat'), request()->input('long')) <= $branch->delivery_distance;
+//        });
+        $branches = $this->branches->where(function ($branch){
             return distance($branch->location['lat'], $branch->location['long'], request()->input('lat'), request()->input('long')) <= $branch->delivery_distance;
         });
 
