@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\StoreResource;
 use App\Http\Resources\Api\TypesResource;
 use App\Models\Branch;
 use App\Models\Type;
@@ -47,14 +48,14 @@ class TypeController extends Controller
             'long' => 'required',
         ]);
 
-        $stores = Branch::query()
+        $stores = StoreResource::collection(Branch::query()
             ->select(['stores.id', 'stores.name', 'stores.logo', 'stores.work_time', 'branches.name as branch_name', 'branches.delivery_cost', 'branches.location', 'branches.location', 'branches.delivery_distance'])
             ->join('stores', 'stores.id', '=', 'branches.store_id')
             ->where('stores.type_id', $type->id)
             ->get()
             ->filter(function($store){
                 return distance($store->location['lat'], $store->location['long'], request()->input('lat'), request()->input('long')) <= $store->delivery_distance;
-            });
+            }));
 
         return $this->paginate($stores, 15);
 

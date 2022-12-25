@@ -14,18 +14,14 @@ class StoreResource extends JsonResource
      */
     public function toArray($request)
     {
-//        $branches = $this->branches->filter(function ($branch){
-//            return distance($branch->location['lat'], $branch->location['long'], request()->input('lat'), request()->input('long')) <= $branch->delivery_distance;
-//        });
-        $branches = $this->branches->where(function ($branch){
-            return distance($branch->location['lat'], $branch->location['long'], request()->input('lat'), request()->input('long')) <= $branch->delivery_distance;
-        });
-
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'logo' => $this->logo_url,
-            'branch' => $branches->count()? $branches[0] : null
+            'branch_name' => $this->branch_name,
+            'work_time' => json_decode($this->work_time),
+            'delivery_cost' => $this->delivery_cost,
+            'location' => $this->location,
+            'logo' => url('storage/' . $this->logo)
         ];
     }
 }
