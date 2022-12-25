@@ -18,7 +18,7 @@ class StoreResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'branch_name' => $this->branch_name,
-            'work_time' => json_decode($this->work_time),
+            'delivery_period' => $this->delivery_period,
             'delivery_cost' => $this->delivery_cost,
             'location' => $this->location,
             'logo' => url('storage/' . $this->logo)
