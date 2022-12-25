@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\StoresResource;
 use App\Http\Resources\Api\TypesResource;
 use App\Models\Branch;
-use App\Models\Store;
 use App\Models\Type;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -50,7 +48,7 @@ class TypeController extends Controller
         ]);
 
         $stores = Branch::query()
-            ->select(['stores.id', 'stores.name', 'stores.logo', 'branches.name as branch_name', 'branches.location', 'branches.location', 'branches.delivery_distance'])
+            ->select(['stores.id', 'stores.name', 'stores.logo', 'stores.work_time', 'branches.name as branch_name', 'branches.delivery_cost', 'branches.location', 'branches.location', 'branches.delivery_distance'])
             ->join('stores', 'stores.id', '=', 'branches.store_id')
             ->where('stores.type_id', $type->id)
             ->get()
