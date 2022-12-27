@@ -19,7 +19,7 @@ class StoreController extends Controller
 
         return Inertia::render('Seller/Store/Index', [
             'store' => $store,
-            'categories' => $categories 
+            'categories' => $categories
         ]);
     }
 
@@ -28,7 +28,7 @@ class StoreController extends Controller
         if(auth('seller')->user()->myStore)
             return abort(403);
 
-        $types = Type::select('id', 'name')->latest()->get();
+        $types = Type::select('id', 'name')->where('type', Type::TYPE_STORE)->latest()->get();
 
         return Inertia::render('Seller/Store/Create', [
             'types' => $types

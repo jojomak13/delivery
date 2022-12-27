@@ -20,5 +20,7 @@ class TypeSeeder extends Seeder
         Type::factory()->create(['name' => 'IceCream']);
         Type::factory()->create(['name' => 'Grills']);
         Type::factory()->create(['name' => 'Fish']);
+
+        Type::factory()->create(['name' => 'Halal', 'type' => Type::TYPE_PRODUCT]);
     }
 }

@@ -60,14 +60,5 @@ class TypeController extends Controller
             }));
 
         return $this->paginate($stores, 15);
-
-//        return $this->paginate($stores, 1);
-        //        return new StoresResource(Store::query()
-//                ->where('type_id', $type->id)
-//                ->where('approved', true)
-//                ->select('stores.*', 'sellers.approved')
-//                ->join('sellers', 'sellers.id', '=', 'stores.seller_id')
-//                ->with('branches')
-//                ->simplePaginate(10));
     }
 }

@@ -13,7 +13,7 @@ import VSelect from 'vue-select'
 
 const { t } = useI18n()
 
-const {product} = defineProps(['product', 'categories', 'extras'])
+const {product} = defineProps(['product', 'categories', 'extras', 'types'])
 
 const form  = useForm({
     _method: 'patch',
@@ -21,6 +21,7 @@ const form  = useForm({
     image: '',
     size: product.size,
     extra: product.extras.map(el => el.id),
+    types: product.types.map(el => el.id),
     category_id: product.category_id,
     description: product.description,
     available: product.available ? 'true' : 'false'
@@ -65,7 +66,7 @@ const removeSize = (id) => {
                                 <InputLabel for="image" :value="t('app.image')" />
                                 <TextInput id="image" type="file" class="mt-1 block w-full" @input="form.image = $event.target.files[0]" />
                                 <InputError class="mt-2" :message="form.errors.image" />
-                            </div>  
+                            </div>
 
                             <div class="md:col-span-1 mb-4">
                                 <InputLabel for="category_id" :value="t('app.category.title_single')" />
@@ -75,7 +76,7 @@ const removeSize = (id) => {
                                 </SelectInput>
                                 <InputError class="mt-2" :message="form.errors.category_id" />
                             </div>
-                            
+
                             <div class="md:col-span-1 mb-4">
                                 <InputLabel for="extra" :value="t('app.extra.title')" />
                                 <v-select multiple v-model="form.extra" :reduce="option => option.id" label="name" :options="extras"></v-select>
@@ -88,13 +89,19 @@ const removeSize = (id) => {
                                 <InputError class="mt-2" :message="form.errors.description" />
                             </div>
 
-                        <div class="md:col-span-1 mb-4">
+                            <div class="md:col-span-1 mb-4">
                                 <InputLabel for="available" :value="t('app.available')" />
                                 <SelectInput id="available" class="mt-1 block w-full" v-model="form.available">
                                     <option value="true">{{ t('app.yes') }}</option>
                                     <option value="false">{{ t('app.no') }}</option>
                                 </SelectInput>
                                 <InputError class="mt-2" :message="form.errors.available" />
+                            </div>
+
+                            <div class="md:col-span-1 mb-4">
+                                <InputLabel for="types" :value="t('app.types')" />
+                                <v-select multiple v-model="form.types" :reduce="option => option.id" label="name" :options="types"></v-select>
+                                <InputError class="mt-2" :message="form.errors.types" />
                             </div>
                         </div>
                         <div class="text-right">
@@ -132,7 +139,7 @@ const removeSize = (id) => {
                 </div>
                 <InputError class="mt-2" :message="form.errors.size" />
             </div>
-               
+
         </div>
     </AuthenticatedLayout>
 </template>

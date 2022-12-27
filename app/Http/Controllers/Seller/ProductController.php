@@ -7,6 +7,7 @@ use App\Http\Requests\Seller\Product\CreateProductRequest;
 use App\Http\Requests\Seller\Product\UpdateProductRequest;
 use App\Models\Extra;
 use App\Models\Product;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
@@ -37,10 +38,12 @@ class ProductController extends Controller
 
         $categories = $store->categories()->select('categories.id', 'name')->get();
         $extras = Extra::where('store_id', $store->id)->select('id', 'name')->get();
+        $types = Type::select('id', 'name')->where('type', Type::TYPE_PRODUCT)->latest()->get();
 
         return Inertia::render('Seller/Products/Create', [
             'categories' => $categories,
             'extras' => $extras,
+            'types' => $types
         ]);
     }
 
@@ -53,6 +56,7 @@ class ProductController extends Controller
         $product->updateImage($request->file('image'));
 
         $product->extras()->sync($request->input('extra'));
+        $product->types()->sync($request->input('types'));
 
         return redirect()->route('seller.products.index');
     }
@@ -63,17 +67,19 @@ class ProductController extends Controller
             return abort(404);
         }
 
-        $product->load('extras:id');
+        $product->load('extras:id', 'types:id');
 
         $store = auth('seller')->user()->myStore;
 
         $categories = $store->categories()->select('categories.id', 'name')->get();
         $extras = Extra::where('store_id', $store->id)->select('id', 'name')->get();
+        $types = Type::select('id', 'name')->where('type', Type::TYPE_PRODUCT)->latest()->get();
 
         return Inertia::render('Seller/Products/Edit', [
             'product' => $product,
             'categories' => $categories,
-            'extras' => $extras
+            'extras' => $extras,
+            'types' => $types
         ]);
     }
 
@@ -86,6 +92,7 @@ class ProductController extends Controller
         $product->update($data);
 
         $product->extras()->sync($request->input('extra'));
+        $product->types()->sync($request->input('types'));
 
         if($request->hasFile('image'))
             $product->updateImage($request->file('image'));

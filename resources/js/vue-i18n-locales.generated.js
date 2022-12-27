@@ -72,7 +72,8 @@ export default {
                 "update": "Update Bundle"
             },
             "allowed_items": "Allowed Products",
-            "delivery_distance": "Delivery Distance"
+            "delivery_distance": "Delivery Distance",
+            "types": "Types"
         }
     },
     "ru": {
@@ -148,7 +149,8 @@ export default {
                 "update": "Обновление пакета"
             },
             "allowed_items": "Разрешенные продукты",
-            "delivery_distance": "Расстояние доставки"
+            "delivery_distance": "Расстояние доставки",
+            "types": "Типы"
         }
     }
 }

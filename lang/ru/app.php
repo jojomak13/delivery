@@ -73,4 +73,5 @@ return [
     ],
     'allowed_items' => 'Разрешенные продукты',
     'delivery_distance' => 'Расстояние доставки',
+    'types' => 'Типы',
 ];

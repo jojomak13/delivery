@@ -13,13 +13,14 @@ import VSelect from 'vue-select'
 
 const { t } = useI18n()
 
-defineProps(['categories', 'extras'])
+defineProps(['categories', 'extras', 'types'])
 
 const form  = useForm({
     name: '',
     image: '',
     size: [],
     extra: [],
+    types: [],
     category_id: '',
     description: '',
     available: true
@@ -64,7 +65,7 @@ const removeSize = (id) => {
                                 <InputLabel for="image" :value="t('app.image')" />
                                 <TextInput id="image" type="file" class="mt-1 block w-full" @input="form.image = $event.target.files[0]" />
                                 <InputError class="mt-2" :message="form.errors.image" />
-                            </div>  
+                            </div>
 
                             <div class="md:col-span-1 mb-4">
                                 <InputLabel for="category_id" :value="t('app.category.title_single')" />
@@ -87,13 +88,19 @@ const removeSize = (id) => {
                                 <InputError class="mt-2" :message="form.errors.description" />
                             </div>
 
-                        <div class="md:col-span-1 mb-4">
+                            <div class="md:col-span-1 mb-4">
                                 <InputLabel for="available" :value="t('app.available')" />
                                 <SelectInput id="available" class="mt-1 block w-full" v-model="form.available">
                                     <option value="true">{{ t('app.yes') }}</option>
                                     <option value="false">{{ t('app.no') }}</option>
                                 </SelectInput>
                                 <InputError class="mt-2" :message="form.errors.available" />
+                            </div>
+
+                            <div class="md:col-span-1 mb-4">
+                                <InputLabel for="types" :value="t('app.types')" />
+                                <v-select multiple v-model="form.types" :reduce="option => option.id" label="name" :options="types"></v-select>
+                                <InputError class="mt-2" :message="form.errors.types" />
                             </div>
                         </div>
                         <div class="text-right">
@@ -131,7 +138,7 @@ const removeSize = (id) => {
                 </div>
                 <InputError class="mt-2" :message="form.errors.size" />
             </div>
-            
+
         </div>
     </AuthenticatedLayout>
 </template>
