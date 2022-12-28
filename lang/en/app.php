@@ -74,4 +74,11 @@ return [
     'allowed_items' => 'Allowed Products',
     'delivery_distance' => 'Delivery Distance',
     'types' => 'Types',
+    'seller' => [
+        'title' => 'Sellers',
+        'update' => 'Update Seller',
+    ],
+    'status' => 'Status',
+    'active' => 'Active',
+    'disabled' => 'Disabled',
 ];

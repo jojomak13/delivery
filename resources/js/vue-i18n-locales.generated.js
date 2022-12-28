@@ -73,7 +73,14 @@ export default {
             },
             "allowed_items": "Allowed Products",
             "delivery_distance": "Delivery Distance",
-            "types": "Types"
+            "types": "Types",
+            "seller": {
+                "title": "Sellers",
+                "update": "Update Seller"
+            },
+            "status": "Status",
+            "active": "Active",
+            "disabled": "Disabled"
         }
     },
     "ru": {
@@ -150,7 +157,14 @@ export default {
             },
             "allowed_items": "Разрешенные продукты",
             "delivery_distance": "Расстояние доставки",
-            "types": "Типы"
+            "types": "Типы",
+            "seller": {
+                "title": "Продавцы",
+                "update": "Обновить продавца"
+            },
+            "status": "Положение дел",
+            "active": "Активный",
+            "disabled": "Неполноценный"
         }
     }
 }
