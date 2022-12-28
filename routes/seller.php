@@ -7,8 +7,13 @@ use App\Http\Controllers\Seller\ExtraController;
 use App\Http\Controllers\Seller\ProductController;
 use App\Http\Controllers\Seller\StoreController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::middleware(['auth:seller'])->group(function(){
+    Route::get('/home', function () {
+        return Inertia::render('Dashboard');
+    })->name('home');
+
     Route::get('store/create', [StoreController::class, 'create'])->name('store.create');
     Route::post('store', [StoreController::class, 'store'])->name('store.store');
 });

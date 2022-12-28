@@ -22,7 +22,7 @@ const form = useForm({
 const { t } = useI18n()
 
 const submit = () => {
-    form.post(route('login'), {
+    form.post(route('admin.login'), {
         onFinish: () => form.reset('password'),
     });
 };

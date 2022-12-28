@@ -19,14 +19,8 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('seller.login'),
         'canRegister' => Route::has('seller.register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
 });
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth:seller', 'verified'])->name('dashboard');
 
 Route::post('/locale', function(){
    if(app()->getLocale() == 'en')

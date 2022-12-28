@@ -32,27 +32,15 @@ const changeLocale = () => {
                 <div class="flex">
                     <!-- Logo -->
                     <div class="shrink-0 flex items-center">
-                        <Link :href="route('seller.home')">
+                        <Link :href="route('admin.home')">
                             <ApplicationLogo class="block h-9 w-auto" />
                         </Link>
                     </div>
 
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <NavLink :href="route('seller.home')" :active="route().current('seller.home')">
+                        <NavLink :href="route('admin.home')" :active="route().current('admin.home')">
                             {{ t('app.dashboard') }}
-                        </NavLink>
-                        <NavLink :href="route('seller.store.index')" :active="route().current('seller.store.index')">
-                            {{ t('app.store.title') }}
-                        </NavLink>
-                        <NavLink :href="route('seller.products.index')" :active="route().current('seller.products.index')">
-                            {{ t('app.product.title') }}
-                        </NavLink>
-                        <NavLink :href="route('seller.bundles.index')" :active="route().current('seller.bundles.index')">
-                            {{ t('app.bundle.title') }}
-                        </NavLink>
-                        <NavLink :href="route('seller.extras.index')" :active="route().current('seller.extras.index')">
-                            {{ t('app.extra.title') }}
                         </NavLink>
                     </div>
 
@@ -84,7 +72,7 @@ const changeLocale = () => {
                             </template>
 
                             <template #content>
-                                <DropdownLink :href="route('seller.logout')" method="post" as="button">
+                                <DropdownLink :href="route('admin.logout')" method="post" as="button">
                                     {{ t('app.logout') }}
                                 </DropdownLink>
                             </template>
@@ -120,7 +108,7 @@ const changeLocale = () => {
                 </div>
 
                 <div class="mt-3 space-y-1">
-                    <ResponsiveNavLink :href="route('seller.logout')" method="post" as="button">
+                    <ResponsiveNavLink :href="route('admin.logout')" method="post" as="button">
                         {{ t('app.logout') }}
                     </ResponsiveNavLink>
                 </div>
