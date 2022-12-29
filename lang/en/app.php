@@ -51,7 +51,9 @@ return [
     'category' => [
         'title_single' => 'Category',
         'title' => 'Categories',
-        'create' => 'Create Category'
+        'create' => 'Create Category',
+        'update' => 'Update Category',
+        'delete_failed' => 'you cannot delete a nonempty category',
     ],
     'product' => [
         'title' => 'Products',

@@ -52,7 +52,7 @@ class Store extends Model
 
     public function updateImage($image)
     {
-        Storage::disk('public')->delete($this->logo);
+        Storage::disk('public')->delete($this->logo ?? '');
 
         $this->logo = $image->store('stores', 'public');
         $this->save();

@@ -51,7 +51,9 @@ export default {
             "category": {
                 "title_single": "Category",
                 "title": "Categories",
-                "create": "Create Category"
+                "create": "Create Category",
+                "update": "Update Category",
+                "delete_failed": "you cannot delete a nonempty category"
             },
             "product": {
                 "title": "Products",
@@ -135,7 +137,9 @@ export default {
             "category": {
                 "title_single": "Категория",
                 "title": "Категории",
-                "create": "Создать категорию"
+                "create": "Создать категорию",
+                "update": "Обновить категорию",
+                "delete_failed": "нельзя удалить непустую категорию"
             },
             "product": {
                 "title": "Товары",

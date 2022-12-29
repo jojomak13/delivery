@@ -28,7 +28,7 @@ class Bundle extends Model
 
     public function updateImage($image)
     {
-        Storage::disk('public')->delete($this->image);
+        Storage::disk('public')->delete($this->image ?? '');
 
         $this->image = $image->store('bundles', 'public');
 
