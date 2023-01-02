@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\StoreController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
@@ -32,6 +33,8 @@ Route::prefix('user')->group(function(){
         Route::prefix('auth')->group(function() {
             Route::post('logout', [AuthController::class, 'logout']);
         });
+
+        Route::apiResource('favorites', FavoriteController::class)->except(['update']);
     });
 });
 

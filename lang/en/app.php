@@ -83,4 +83,9 @@ return [
     'status' => 'Status',
     'active' => 'Active',
     'disabled' => 'Disabled',
+    'favorite' => [
+        'added' => 'Product added to favorite successfully',
+        'exists' => 'Product already exists in favorite',
+        'deleted' => 'Product removed from favorite successfully'
+    ],
 ];

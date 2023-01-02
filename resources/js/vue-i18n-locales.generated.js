@@ -82,7 +82,12 @@ export default {
             },
             "status": "Status",
             "active": "Active",
-            "disabled": "Disabled"
+            "disabled": "Disabled",
+            "favorite": {
+                "added": "Product added to favorite successfully",
+                "exists": "Product already exists in favorite",
+                "deleted": "Product removed from favorite successfully"
+            }
         }
     },
     "ru": {
@@ -168,7 +173,12 @@ export default {
             },
             "status": "Положение дел",
             "active": "Активный",
-            "disabled": "Неполноценный"
+            "disabled": "Неполноценный",
+            "favorite": {
+                "added": "Товар успешно добавлен в избранное",
+                "exists": "Товар уже есть в избранном",
+                "deleted": "Товар успешно удален из избранного"
+            }
         }
     }
 }
