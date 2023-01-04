@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\FavoriteController;
+use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\StoreController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
@@ -34,10 +35,10 @@ Route::prefix('user')->group(function(){
             Route::post('logout', [AuthController::class, 'logout']);
         });
 
+        // Profile
+        Route::get('profile', [ProfileController::class, 'edit']);
+        Route::patch('profile', [ProfileController::class, 'update']);
+
         Route::apiResource('favorites', FavoriteController::class)->except(['update']);
     });
-});
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
 });

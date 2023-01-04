@@ -88,4 +88,7 @@ return [
         'exists' => 'Product already exists in favorite',
         'deleted' => 'Product removed from favorite successfully'
     ],
+    'profile' => [
+        'updated' => 'Profile updated successfully'
+    ],
 ];

@@ -87,6 +87,9 @@ export default {
                 "added": "Product added to favorite successfully",
                 "exists": "Product already exists in favorite",
                 "deleted": "Product removed from favorite successfully"
+            },
+            "profile": {
+                "updated": "Profile updated successfully"
             }
         }
     },
@@ -178,6 +181,9 @@ export default {
                 "added": "Товар успешно добавлен в избранное",
                 "exists": "Товар уже есть в избранном",
                 "deleted": "Товар успешно удален из избранного"
+            },
+            "profile": {
+                "updated": "Профиль успешно обновлен"
             }
         }
     }
