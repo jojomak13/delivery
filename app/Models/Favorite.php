@@ -12,6 +12,12 @@ class Favorite extends Model
 
     protected $guarded = ['id'];
 
+    const TYPES = [
+        'product'   => Product::class,
+        'bundle'    => Bundle::class,
+        'store'     => Store::class,
+    ];
+
     /**
      * @return MorphTo
      */

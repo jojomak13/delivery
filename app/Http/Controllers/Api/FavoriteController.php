@@ -19,9 +19,19 @@ class FavoriteController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $products = $request->user()->favorites->load('favorable');
+        $request->validate([
+            'favorable_type' => 'required|in:product,bundle,store'
+        ]);
 
-        return response()->json(FavoritesResource::collection($products));
+        $type = Favorite::TYPES[$request->input('favorable_type')];
+
+        $favorites = $request->user()
+                ->favorites()
+                ->where('favorable_type', $type)
+                ->with('favorable')
+                ->get();
+
+        return response()->json(FavoritesResource::collection($favorites));
     }
 
     /**
@@ -32,10 +42,10 @@ class FavoriteController extends Controller
     {
         $request->validate([
             'favorable_id' => 'required',
-            'favorable_type' => 'required|in:product,bundle'
+            'favorable_type' => 'required|in:product,bundle,store'
         ]);
 
-        $type = $request->input('favorable_type') == 'product'? Product::class : Bundle::class;
+        $type = Favorite::TYPES[$request->input('favorable_type')];
 
         $exists = $request->user()->favorites()
                 ->where('favorable_id', $request->input('favorable_id'))

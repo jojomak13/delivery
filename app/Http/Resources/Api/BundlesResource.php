@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources\Api;
 
-use App\Models\Product;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProductsResource extends JsonResource
+class BundlesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,7 +18,7 @@ class ProductsResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'size' => $this->size,
+            'price' => $this->price,
             'image' => $this->image_url,
             'category_id' => $this->category_id,
         ];

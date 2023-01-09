@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api;
 
+use App\Models\Favorite;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class FavoritesResource extends JsonResource
@@ -14,14 +15,23 @@ class FavoritesResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'product_id' => $this->favorable->id,
-            'name' => $this->favorable->name,
-            'description' => $this->favorable->description,
-            'size' => $this->favorable->size,
-            'image' => $this->favorable->image_url,
-            'category_id' => $this->favorable->category_id
-        ];
+        if($this->favorable_type === Favorite::TYPES['store'])
+            return [
+                'id' => $this->id,
+                'store_id' => $this->favorable->id,
+                'name' => $this->favorable->name,
+                'description' => $this->favorable->description,
+                'image' => $this->favorable->logo_url,
+            ];
+        else
+            return [
+                'id' => $this->id,
+                'product_id' => $this->favorable->id,
+                'name' => $this->favorable->name,
+                'description' => $this->favorable->description,
+                'size' => $this->favorable->size,
+                'image' => $this->favorable->image_url,
+                'category_id' => $this->favorable->category_id
+            ];
     }
 }

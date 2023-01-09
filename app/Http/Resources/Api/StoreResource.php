@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api;
 
+use App\Models\Favorite;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class StoreResource extends JsonResource
@@ -14,6 +15,8 @@ class StoreResource extends JsonResource
      */
     public function toArray($request)
     {
+        $user = auth('sanctum')->user();
+
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -21,7 +24,11 @@ class StoreResource extends JsonResource
             'delivery_period' => $this->delivery_period,
             'delivery_cost' => $this->delivery_cost,
             'location' => $this->location,
-            'logo' => url('storage/' . $this->logo)
+            'logo' => url('storage/' . $this->logo),
+            'is_favorite' => $user && $user->favorites()
+                ->where('favorable_type', Favorite::TYPES['store'])
+                ->where('favorable_id', $this->store_id)
+                ->count()
         ];
     }
 }

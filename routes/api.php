@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BundleController;
 use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\StoreController;
 use App\Http\Controllers\Api\TypeController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +23,10 @@ Route::get('categories', [TypeController::class, 'index']);
 Route::get('categories/{type}', [TypeController::class, 'show']);
 Route::get('store/{store}', [StoreController::class, 'index']);
 Route::get('product/{product}', [StoreController::class, 'show']);
+
+Route::get('bundles', [BundleController::class, 'index']);
+Route::get('bundles/{bundle}', [BundleController::class, 'show']);
+
 
 Route::prefix('user')->group(function(){
     Route::prefix('auth')->group(function(){
