@@ -58,6 +58,8 @@ class FavoriteController extends Controller
             ]);
         }
 
+        $type::findorFail($request->input('favorable_id'));
+
         $request->user()->favorites()->create([
             'favorable_id' => $request->input('favorable_id'),
             'favorable_type' => $type
