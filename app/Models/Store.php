@@ -24,6 +24,11 @@ class Store extends Model
         'work_time' => '{"from": "", "to": ""]'
     ];
 
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class);
+    }
+
     public function extras(): HasMany
     {
         return $this->hasMany(Extra::class);
