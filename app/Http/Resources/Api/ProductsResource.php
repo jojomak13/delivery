@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Api;
 
-use App\Models\Product;
+use App\Models\Favorite;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductsResource extends JsonResource
@@ -15,6 +15,8 @@ class ProductsResource extends JsonResource
      */
     public function toArray($request)
     {
+        $user = auth('sanctum')->user();
+
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -22,6 +24,10 @@ class ProductsResource extends JsonResource
             'size' => $this->size,
             'image' => $this->image_url,
             'category_id' => $this->category_id,
+            'is_favorite' => $user && $user->favorites()
+                ->where('favorable_type', Favorite::TYPES['product'])
+                ->where('favorable_id', $this->id)
+                ->count()
         ];
     }
 }
