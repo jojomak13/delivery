@@ -90,6 +90,12 @@ export default {
             },
             "profile": {
                 "updated": "Profile updated successfully"
+            },
+            "cart": {
+                "added": "Item added to cart successfully",
+                "deleted": "Item removed from cart successfully",
+                "same_store_error": "Your cart must be from one store",
+                "invalid_options": "Invalid options"
             }
         }
     },
@@ -184,6 +190,12 @@ export default {
             },
             "profile": {
                 "updated": "Профиль успешно обновлен"
+            },
+            "cart": {
+                "added": "Товар успешно добавлен в корзину",
+                "deleted": "Товар успешно удален из корзины",
+                "same_store_error": "Ваша корзина должна быть из одного магазина",
+                "invalid_options": "Недопустимые параметры"
             }
         }
     }

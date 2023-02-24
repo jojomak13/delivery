@@ -91,4 +91,10 @@ return [
     'profile' => [
         'updated' => 'Profile updated successfully'
     ],
+    'cart' => [
+        'added' => 'Item added to cart successfully',
+        'deleted' => 'Item removed from cart successfully',
+        'same_store_error' => 'Your cart must be from one store',
+        'invalid_options' => 'Invalid options',
+    ],
 ];

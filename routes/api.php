@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BundleController;
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\StoreController;
@@ -33,16 +34,18 @@ Route::prefix('user')->group(function(){
         Route::post('login', [AuthController::class, 'login']);
         Route::post('register', [AuthController::class, 'register']);
     });
-
+    
     Route::middleware('auth:sanctum')->group(function(){
         Route::prefix('auth')->group(function() {
             Route::post('logout', [AuthController::class, 'logout']);
         });
-
+        
         // Profile
         Route::get('profile', [ProfileController::class, 'edit']);
         Route::patch('profile', [ProfileController::class, 'update']);
-
+        
         Route::apiResource('favorites', FavoriteController::class)->except(['update']);
+        
+        Route::apiResource('cart', CartController::class)->except(['update', 'show']);
     });
 });
