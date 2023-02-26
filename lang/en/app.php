@@ -95,6 +95,7 @@ return [
         'added' => 'Item added to cart successfully',
         'deleted' => 'Item removed from cart successfully',
         'same_store_error' => 'Your cart must be from one store',
+        'same_branch_error' => 'Your cart must be from one branch',
         'invalid_options' => 'Invalid options',
     ],
 ];

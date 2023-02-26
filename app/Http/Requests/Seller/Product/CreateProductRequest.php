@@ -29,7 +29,7 @@ class CreateProductRequest extends FormRequest
             'size' => 'required|array|min:1',
             'size.*.id' => 'required',
             'size.*.name' => 'required',
-            'size.*.price' => 'required|integer',
+            'size.*.price' => 'required|numeric',
             'extra' => 'required|array|min:1',
             'types' => 'nullable|array',
             'category_id' => 'required|exists:categories,id',

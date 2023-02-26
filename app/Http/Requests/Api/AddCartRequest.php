@@ -30,6 +30,7 @@ class AddCartRequest extends FormRequest
             'options' => 'required_unless:cartable_type,extra',
             'options.size' => 'required_if:cartable_type,product',
             'options.products' => 'required_if:cartable_type,bundle|array',
+            'branch_id' => 'required|exists:branches,id',
         ];
     }
 }

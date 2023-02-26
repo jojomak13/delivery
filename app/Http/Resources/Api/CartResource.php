@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api;
 
+use App\Http\Resources\ProductCartResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CartResource extends JsonResource
@@ -14,10 +15,16 @@ class CartResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
-        // return [
-        //     'id' => $this->id,
-        //     'quantity' => $this->quantity
-        // ];
+        $items = ProductCartResource::collection($this)->toArray($request);
+        $subTotal = collect($items)->sum(fn ($el) => $el['total_price']);
+        $branch = $this->first()->branch;
+
+        return [
+            'items' => $items,
+            'sub_total' => $subTotal,
+            'delivery_price' => (float) $branch->delivery_cost,
+            'total_price' => $subTotal + (float) $branch->delivery_cost,
+            'estimated_time' => $branch->delivery_period . ' ' . __('app.minutes'),
+        ];
     }
 }

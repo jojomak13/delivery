@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->morphs('cartable');
             $table->mediumInteger('quantity');
-            $table->unsignedBigInteger('store_id');
+            $table->unsignedBigInteger('branch_id');
             $table->json('options')->nullable();
             $table->foreignId('user_id')
                 ->constrained('users')

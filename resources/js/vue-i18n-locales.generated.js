@@ -95,6 +95,7 @@ export default {
                 "added": "Item added to cart successfully",
                 "deleted": "Item removed from cart successfully",
                 "same_store_error": "Your cart must be from one store",
+                "same_branch_error": "Your cart must be from one branch",
                 "invalid_options": "Invalid options"
             }
         }
@@ -195,6 +196,7 @@ export default {
                 "added": "Товар успешно добавлен в корзину",
                 "deleted": "Товар успешно удален из корзины",
                 "same_store_error": "Ваша корзина должна быть из одного магазина",
+                "same_branch_error": "Ваша тележка должна быть из одной ветки",
                 "invalid_options": "Недопустимые параметры"
             }
         }
