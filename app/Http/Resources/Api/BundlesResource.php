@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api;
 
+use App\Models\Favorite;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class BundlesResource extends JsonResource
@@ -14,6 +15,8 @@ class BundlesResource extends JsonResource
      */
     public function toArray($request)
     {
+        $user = auth('sanctum')->user();
+
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -21,6 +24,10 @@ class BundlesResource extends JsonResource
             'price' => $this->price,
             'image' => $this->image_url,
             'category_id' => $this->category_id,
+            'is_favorite' => $user && $user->favorites()
+                ->where('favorable_type', Favorite::TYPES['bundle'])
+                ->where('favorable_id', $this->id)
+                ->count()
         ];
     }
 }

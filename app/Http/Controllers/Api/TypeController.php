@@ -49,7 +49,7 @@ class TypeController extends Controller
         ]);
 
         $stores = StoreResource::collection(Branch::query()
-            ->select(['stores.id', 'stores.name', 'stores.logo', 'branches.name as branch_name', 'branches.delivery_cost', 'branches.delivery_period', 'branches.location', 'branches.store_id', 'branches.delivery_distance'])
+            ->select(['stores.id', 'stores.name', 'stores.logo', 'branches.id as branch_id', 'branches.name as branch_name', 'branches.delivery_cost', 'branches.delivery_period', 'branches.location', 'branches.store_id', 'branches.delivery_distance'])
             ->join('stores', 'stores.id', '=', 'branches.store_id')
             ->join('sellers', 'sellers.id', '=', 'stores.seller_id')
             ->where('stores.type_id', $type->id)

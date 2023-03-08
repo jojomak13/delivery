@@ -20,7 +20,10 @@ class StoreResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'branch_name' => $this->branch_name,
+            'branch' => [
+                'id' => $this->branch_id,
+                'name' => $this->branch_name,
+            ],
             'delivery_period' => $this->delivery_period,
             'delivery_cost' => $this->delivery_cost,
             'location' => $this->location,
