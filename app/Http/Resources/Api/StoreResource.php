@@ -28,10 +28,10 @@ class StoreResource extends JsonResource
             'delivery_cost' => $this->delivery_cost,
             'location' => $this->location,
             'logo' => url('storage/' . $this->logo),
-            'is_favorite' => $user && $user->favorites()
+            'favorite_id' => $user? $user->favorites()
                 ->where('favorable_type', Favorite::TYPES['store'])
                 ->where('favorable_id', $this->store_id)
-                ->count()
+                ->first()?->id : null
         ];
     }
 }
