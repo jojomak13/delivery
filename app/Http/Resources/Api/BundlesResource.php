@@ -24,10 +24,10 @@ class BundlesResource extends JsonResource
             'price' => $this->price,
             'image' => $this->image_url,
             'category_id' => $this->category_id,
-            'is_favorite' => $user && $user->favorites()
+            'favorite_id' => $user? $user->favorites()
                 ->where('favorable_type', Favorite::TYPES['bundle'])
                 ->where('favorable_id', $this->id)
-                ->count()
+                ->first()?->id : null
         ];
     }
 }
