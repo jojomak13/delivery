@@ -58,12 +58,13 @@ class FavoriteController extends Controller
 
         $type::findorFail($request->input('favorable_id'));
 
-        $request->user()->favorites()->create([
+        $favorite = $request->user()->favorites()->create([
             'favorable_id' => $request->input('favorable_id'),
             'favorable_type' => $type
         ]);
 
         return response()->json([
+            'data' => $favorite,
             'msg' => __('app.favorite.added')
         ]);
     }
