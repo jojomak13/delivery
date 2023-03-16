@@ -11,7 +11,8 @@ const { t } = useI18n()
 
 const form  = useForm({
     name: '',
-    price: ''
+    price: '',
+    image: '',
 })
 
 const save = () => {
@@ -42,6 +43,11 @@ const save = () => {
                             <InputLabel for="price" :value="t('app.price')" />
                             <TextInput id="price" type="number" step="0.1" min="0" class="mt-1 block w-full" v-model="form.price"/>
                             <InputError class="mt-2" :message="form.errors.price" />
+                        </div>
+                        <div class="md:col-span-1 mb-4">
+                            <InputLabel for="image" :value="t('app.image')" />
+                            <TextInput id="image" type="file" class="mt-1 block w-full" @input="form.image = $event.target.files[0]" />
+                            <InputError class="mt-2" :message="form.errors.image" />
                         </div>
                     </div>
                     <div class="text-right">

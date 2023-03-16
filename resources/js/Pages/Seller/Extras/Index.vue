@@ -49,8 +49,15 @@ const deleteExtra = (extra) => {
                         <tbody class="divide-y divide-gray-200 bg-white">
                             <template v-if="extras.data.length">
                                 <tr v-for="extra in extras.data" :key="extra.id">
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        <div class="text-gray-900">{{ extra.name }}</div>
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                                        <div class="flex items-center">
+                                            <div class="h-10 w-10 flex-shrink-0">
+                                                <img class="h-10 w-10 rounded-full" :src="extra.image_url" :alt="extra.name" />
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="font-medium text-gray-900">{{ extra.name }}</div>
+                                            </div>
+                                        </div>
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                         <div class="text-gray-900">{{ extra.price }}</div>
