@@ -17,14 +17,14 @@ class CartResource extends JsonResource
     {
         $items = ProductCartResource::collection($this)->toArray($request);
         $subTotal = collect($items)->sum(fn ($el) => $el['total_price']);
-        $branch = $this->first()->branch;
+        $branch = $this->first()?->branch;
 
         return [
             'items' => $items,
             'sub_total' => $subTotal,
-            'delivery_price' => (float) $branch->delivery_cost,
-            'total_price' => $subTotal + (float) $branch->delivery_cost,
-            'estimated_time' => $branch->delivery_period . ' ' . __('app.minutes'),
+            'delivery_price' => (float) $branch?->delivery_cost,
+            'total_price' => $subTotal + (float) $branch?->delivery_cost,
+            'estimated_time' => $branch?->delivery_period . ' ' . __('app.minutes'),
         ];
     }
 }
