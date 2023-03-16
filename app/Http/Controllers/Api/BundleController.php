@@ -26,14 +26,28 @@ class BundleController extends Controller
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $bundles = BundlesResource::collection(Bundle::query()
-            // TODO:: un-comment this
-//            ->where('approved', true)
-            ->latest()
-            ->get());
+        $request->validate([
+            'lat' => 'required',
+            'long' => 'required',
+        ]);
 
+        $bundles = BundlesResource::collection(
+            Bundle::query()
+                ->select('bundles.*', 'branches.location', 'branches.delivery_distance', 'branches.id as branch_id')
+                ->join('stores', 'bundles.store_id', '=', 'stores.id')
+                ->join('branches', 'branches.store_id', '=', 'stores.id')
+                // TODO:: un-comment this
+    //            ->where('approved', true)
+                ->latest()
+                ->get()
+                ->filter(function($bundle){
+                    $location = json_decode($bundle->location);
+                    return distance($location->lat, $location->long, request()->input('lat'), request()->input('long')) <= $bundle->delivery_distance;  
+                })
+        );
+        
         return $this->paginate($bundles, 15);
     }
 

@@ -23,6 +23,7 @@ class BundlesResource extends JsonResource
             'description' => $this->description,
             'price' => $this->price,
             'image' => $this->image_url,
+            'branch_id' => $this->branch_id,
             'category_id' => $this->category_id,
             'favorite_id' => $user? $user->favorites()
                 ->where('favorable_type', Favorite::TYPES['bundle'])

@@ -35,6 +35,16 @@ class Bundle extends Model
         $this->save();
     }
 
+    public function branches()
+    {
+        return $this->hasManyThrough(Branch::class, Store::class);
+    }
+
+    public function store()
+    {
+        $this->belongsTo(Store::class);
+    }
+
     public function getImageUrlAttribute(): string
     {
         return url('storage/' . $this->image);
