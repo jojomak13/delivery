@@ -96,7 +96,8 @@ export default {
                 "deleted": "Item removed from cart successfully",
                 "same_store_error": "Your cart must be from one store",
                 "same_branch_error": "Your cart must be from one branch",
-                "invalid_options": "Invalid options"
+                "invalid_options": "Invalid options",
+                "quantity_not_valid": "Quantity not valid"
             }
         }
     },
@@ -197,7 +198,8 @@ export default {
                 "deleted": "Товар успешно удален из корзины",
                 "same_store_error": "Ваша корзина должна быть из одного магазина",
                 "same_branch_error": "Ваша тележка должна быть из одной ветки",
-                "invalid_options": "Недопустимые параметры"
+                "invalid_options": "Недопустимые параметры",
+                "quantity_not_valid": "Количество недействительно"
             }
         }
     }

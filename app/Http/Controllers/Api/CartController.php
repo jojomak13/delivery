@@ -10,6 +10,7 @@ use App\Models\Bundle;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class CartController extends Controller
 {
@@ -76,6 +77,13 @@ class CartController extends Controller
 
     private function updateQuantity($cartItem, $quantity)
     {
+        if($cartItem->quantity + $quantity <= 0){
+            throw ValidationException::withMessages([
+                'quantity' => __('app.quantity_not_valid'),
+            ]);
+        }
+            
+
         $cartItem->update([
             'quantity' => $cartItem->quantity + $quantity
         ]);

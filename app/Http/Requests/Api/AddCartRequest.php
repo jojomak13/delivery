@@ -26,7 +26,7 @@ class AddCartRequest extends FormRequest
         return [
             'cartable_type' => 'required',
             'cartable_id' => 'required',
-            'quantity' => 'required|integer|min:1',
+            'quantity' => 'required|integer',
             'options' => 'required_unless:cartable_type,extra',
             'options.size' => 'required_if:cartable_type,product',
             'options.products' => 'required_if:cartable_type,bundle|array',
