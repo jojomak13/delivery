@@ -34,14 +34,13 @@ class CartController extends Controller
         abort_unless($this->hasValidOptions($item), 422, __('app.cart.invalid_options'));
 
         $cartItem = $request->user()->cart()
-                ->where('cartable_id', $request->input('cartable_id'))
-                ->where('cartable_type', $type)
-                ->first();
+            ->where('cartable_id', $request->input('cartable_id'))
+            ->where('cartable_type', $type)
+            ->first();
 
-        if($cartItem)
-            $this->updateQuantity($cartItem, $request->input('quantity'));
-        else 
-            $this->add($request, $type);
+        abort_if($cartItem && $cartItem->id, 422, __('app.cart.item_exists'));
+
+        $this->add($request, $type);
 
         return response()->json([
             'msg' => __('app.cart.added')
@@ -75,19 +74,25 @@ class CartController extends Controller
         return request()->user()->cart()->first()->branch_id == request()->branch_id;
     }
 
-    private function updateQuantity($cartItem, $quantity)
+    public function update(Cart $cart, Request $request)
     {
-        if($cartItem->quantity + $quantity <= 0){
+        abort_unless($cart->user_id === $request->user()->id, 403);
+
+        $data = $request->validate(['quantity' => 'required|integer']);
+
+        if($cart->quantity + $data['quantity'] <= 0){
             throw ValidationException::withMessages([
-                'quantity' => __('app.quantity_not_valid'),
+                'quantity' => __('app.cart.quantity_not_valid'),
             ]);
         }
             
-
-        $cartItem->update([
-            'quantity' => $cartItem->quantity + $quantity
+        $cart->update([
+            'quantity' => $cart->quantity + $data['quantity']
         ]);
+
+        return new CartResource($request->user()->cart->load('cartable'));
     }
+
 
     private function add(AddCartRequest $request, $type)
     {

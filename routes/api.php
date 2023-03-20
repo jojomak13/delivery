@@ -46,6 +46,6 @@ Route::prefix('user')->group(function(){
         
         Route::apiResource('favorites', FavoriteController::class)->except(['update']);
         
-        Route::apiResource('cart', CartController::class)->except(['update', 'show']);
+        Route::apiResource('cart', CartController::class)->except(['show']);
     });
 });

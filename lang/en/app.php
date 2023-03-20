@@ -97,6 +97,7 @@ return [
         'same_store_error' => 'Your cart must be from one store',
         'same_branch_error' => 'Your cart must be from one branch',
         'invalid_options' => 'Invalid options',
+        'item_exists' => 'Item already exists before',
         'quantity_not_valid' => 'Quantity not valid'
     ],
 ];
