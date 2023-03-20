@@ -38,9 +38,10 @@ class CartController extends Controller
             ->where('cartable_type', $type)
             ->first();
 
-        abort_if($cartItem && $cartItem->id, 422, __('app.cart.item_exists'));
-
-        $this->add($request, $type);
+        if($cartItem)
+            $this->updateQuantity($cartItem, $request->input('quantity'));
+        else 
+            $this->add($request, $type);
 
         return response()->json([
             'msg' => __('app.cart.added')
@@ -72,6 +73,19 @@ class CartController extends Controller
         if(!request()->user()->cart()->count()) return true;
 
         return request()->user()->cart()->first()->branch_id == request()->branch_id;
+    }
+
+    public function updateQuantity($cartItem, $quantity)
+    {
+        if($cartItem->quantity + $quantity <= 0){
+            throw ValidationException::withMessages([
+                'quantity' => __('app.cart.quantity_not_valid'),
+            ]);
+        }
+            
+        $cartItem->update([
+            'quantity' => $cartItem->quantity + $quantity
+        ]);
     }
 
     public function update(Cart $cart, Request $request)
