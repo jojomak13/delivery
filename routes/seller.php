@@ -5,6 +5,7 @@ use App\Http\Controllers\Seller\BundleController;
 use App\Http\Controllers\Seller\CategoryController;
 use App\Http\Controllers\Seller\ExtraController;
 use App\Http\Controllers\Seller\ProductController;
+use App\Http\Controllers\Seller\PromoCodeController;
 use App\Http\Controllers\Seller\StoreController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,6 +33,8 @@ Route::middleware(['auth:seller', 'hasStore'])->group(function(){
     Route::resource('products', ProductController::class);
 
     Route::resource('bundles', BundleController::class);
+
+    Route::resource('codes', PromoCodeController::class);
 
 });
 

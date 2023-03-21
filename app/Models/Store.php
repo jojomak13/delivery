@@ -49,6 +49,11 @@ class Store extends Model
         return $this->hasMany(Branch::class);
     }
 
+    public function codes(): HasMany
+    {
+        return $this->hasMany(PromoCode::class);
+    }
+
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class)

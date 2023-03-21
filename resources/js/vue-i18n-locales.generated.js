@@ -19,6 +19,8 @@ export default {
             "yes": "Yes",
             "no": "No",
             "available": "Available",
+            "expired": "Expired",
+            "finished": "Finished",
             "already_registered": "Already registered?",
             "register": "Register",
             "remember_me": "Remember me",
@@ -98,7 +100,19 @@ export default {
                 "same_branch_error": "Your cart must be from one branch",
                 "invalid_options": "Invalid options",
                 "item_exists": "Item already exists before"
-            }
+            },
+            "code": {
+                "title": "Promo Codes",
+                "create": "Create Promo Code",
+                "available": "Congrats, this is a valid promo code",
+                "finished": "This promo code reached the maximum usage",
+                "expired": "This promo code expired"
+            },
+            "usage": "Usage",
+            "end_date": "End Date",
+            "limit": "Limit",
+            "amount": "Amount",
+            "ru": "₽"
         }
     },
     "ru": {
@@ -121,6 +135,8 @@ export default {
             "yes": "Да",
             "no": "Нет",
             "available": "Доступный",
+            "expired": "Истекший",
+            "finished": "Законченный",
             "already_registered": "Уже зарегистрирован?",
             "register": "регистр",
             "remember_me": "Запомните меня",
@@ -200,7 +216,19 @@ export default {
                 "same_branch_error": "Ваша тележка должна быть из одной ветки",
                 "invalid_options": "Недопустимые параметры",
                 "item_exists": "Товар уже существует раньше"
-            }
+            },
+            "code": {
+                "title": "Промокоды",
+                "create": "Создать промокод",
+                "available": "Поздравляю, это действующий промокод",
+                "finished": "Этот промо-код достиг максимального использования",
+                "expired": "Срок действия этого промокода истек"
+            },
+            "usage": "Применение",
+            "end_date": "Дата окончания",
+            "limit": "Ограничение",
+            "amount": "Количество",
+            "ru": "₽"
         }
     }
 }
