@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Order;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,9 +16,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->decimal('price');
+            $table->decimal('sub_price');
+            $table->decimal('delivery_price');
+            $table->decimal('discount_price');
+            $table->decimal('total_price');
+            $table->mediumInteger('estimated_time');
             $table->json('location');
             $table->json('items');
+            $table->string('status')->default(Order::PENDING);
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->cascadeOnUpdate()

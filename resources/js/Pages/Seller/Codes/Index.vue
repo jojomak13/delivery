@@ -80,7 +80,7 @@ const deletecode = (code) => {
                             </template>
                             <template v-else>
                                 <tr>
-                                    <td colspan="5" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">
+                                    <td colspan="6" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">
                                         <div class="text-gray-900">{{ t('app.no_records') }}</div>
                                     </td>
                                 </tr>

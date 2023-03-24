@@ -16,6 +16,12 @@ class Order extends Model
         'items' => 'collect'
     ];
 
+    const PENDING = 'pending';
+    const INPROGRESS = 'in-progress';
+    const DELIVERED = 'delivered';
+    const COMPLETED = 'completed';
+    const CANCELLED = 'cancelled';
+
     public function user()
     {
         return $this->belongsTo(User::class);
