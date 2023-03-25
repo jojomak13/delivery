@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Api;
 
-use App\Http\Resources\ProductCartResource;
+use App\Http\Resources\Api\Cart\ItemsResource;
 use App\Models\PromoCode;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -16,7 +16,7 @@ class CartResource extends JsonResource
      */
     public function toArray($request)
     {
-        $items = ProductCartResource::collection($this)->toArray($request);
+        $items = ItemsResource::collection($this)->toArray($request);
         $subTotal = collect($items)->sum(fn ($el) => $el['total_price']);
         $branch = $this->first()?->branch;
 

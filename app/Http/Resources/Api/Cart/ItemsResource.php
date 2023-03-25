@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Api\Cart;
 
+use App\Models\Bundle;
 use App\Models\Product;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProductCartResource extends JsonResource
+class ItemsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,7 +22,7 @@ class ProductCartResource extends JsonResource
             $selectedSize = collect($this->cartable->size)->filter(fn ($el) => $el['name'] === $this->options['size'])->first();
             $price = (float) $selectedSize['price'];
         }
-
+        
         return [
             'id' => $this->id,
             'name' => $this->cartable->name,
@@ -30,6 +31,14 @@ class ProductCartResource extends JsonResource
             'quantity' => $this->quantity,
             'price' => $price,
             'total_price' => $price * $this->quantity,
+            'options' => [
+                'size' => $this->when($this->cartable_type === Product::class, function(){
+                    return $this->options['size'];
+                }),
+                'products' => $this->when($this->cartable_type === Bundle::class, function(){
+                    return BundleProductsResource::collection($this->cartable->products()->whereIn('products.id', $this->options['products'])->get());
+                }),
+            ],
         ];
     }
 }

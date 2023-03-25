@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BundleController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\FavoriteController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\PromoCodeController;
 use App\Http\Controllers\Api\StoreController;
@@ -48,7 +49,9 @@ Route::prefix('user')->group(function(){
         Route::apiResource('favorites', FavoriteController::class)->except(['update']);
         
         Route::apiResource('cart', CartController::class)->except(['show']);
-
+        
         Route::post('code/check', [PromoCodeController::class, 'check']);
+
+        Route::apiResource('orders', OrderController::class)->except(['destroy']);
     });
 });
