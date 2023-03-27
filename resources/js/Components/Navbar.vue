@@ -42,6 +42,9 @@ const changeLocale = () => {
                         <NavLink :href="route('seller.home')" :active="route().current('seller.home')">
                             {{ t('app.dashboard') }}
                         </NavLink>
+                        <NavLink :href="route('seller.orders.index')" :active="route().current('seller.orders.index')">
+                            {{ t('app.order.title') }}
+                        </NavLink>
                         <NavLink :href="route('seller.store.index')" :active="route().current('seller.store.index')">
                             {{ t('app.store.title') }}
                         </NavLink>

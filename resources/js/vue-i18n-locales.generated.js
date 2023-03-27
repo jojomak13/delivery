@@ -40,11 +40,14 @@ export default {
             "select_option": "Select Option",
             "branch": {
                 "title": "Branches",
+                "single": "Branch",
                 "create": "Create Branch",
                 "update": "Update Branch"
             },
             "order": {
-                "created": "Order created successfully"
+                "title": "Orders",
+                "created": "Order created successfully",
+                "show": "Order Details"
             },
             "edit": "Edit",
             "delete": "Delete",
@@ -112,7 +115,24 @@ export default {
             "end_date": "End Date",
             "limit": "Limit",
             "amount": "Amount",
-            "ru": "₽"
+            "ru": "₽",
+            "customer": "Customer",
+            "sub_price": "Price",
+            "discount_price": "Discount",
+            "total_price": "Total",
+            "created_at": "Created At",
+            "pricing": "Pricing",
+            "street": "Street",
+            "floor_number": "Floor Number",
+            "phone_number": "Phone Number",
+            "building_type": "Building Type",
+            "apartment_number": "Apartment Number",
+            "quantity": "Quantity",
+            "inprogress": "in-progress",
+            "delivered": "Delivered",
+            "completed": "Completed",
+            "canceled": "Canceled",
+            "pending": "Pending"
         }
     },
     "ru": {
@@ -156,11 +176,14 @@ export default {
             "select_option": "Выберите опцию",
             "branch": {
                 "title": "ветви",
+                "single": "Ветвь",
                 "create": "Создать ветку",
                 "update": "Обновить ветку"
             },
             "order": {
-                "created": "Заказ успешно создан"
+                "title": "Заказы",
+                "created": "Заказ успешно создан",
+                "show": "Информация для заказа"
             },
             "edit": "Редактировать",
             "delete": "Удалить",
@@ -228,7 +251,24 @@ export default {
             "end_date": "Дата окончания",
             "limit": "Ограничение",
             "amount": "Количество",
-            "ru": "₽"
+            "ru": "₽",
+            "customer": "Клиент",
+            "sub_price": "Цена",
+            "discount_price": "Скидка",
+            "total_price": "Общий",
+            "created_at": "Создан в",
+            "pricing": "Цены",
+            "street": "Улица",
+            "floor_number": "Номер этажа",
+            "phone_number": "Номер телефона",
+            "building_type": "Тип здания",
+            "apartment_number": "Номер квартиры",
+            "quantity": "Количество",
+            "inprogress": "в ходе выполнения",
+            "delivered": "Доставленный",
+            "completed": "Завершенный",
+            "canceled": "отменен",
+            "pending": "В ожидании"
         }
     }
 }

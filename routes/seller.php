@@ -4,6 +4,7 @@ use App\Http\Controllers\Seller\BranchController;
 use App\Http\Controllers\Seller\BundleController;
 use App\Http\Controllers\Seller\CategoryController;
 use App\Http\Controllers\Seller\ExtraController;
+use App\Http\Controllers\Seller\OrderController;
 use App\Http\Controllers\Seller\ProductController;
 use App\Http\Controllers\Seller\PromoCodeController;
 use App\Http\Controllers\Seller\StoreController;
@@ -35,6 +36,8 @@ Route::middleware(['auth:seller', 'hasStore'])->group(function(){
     Route::resource('bundles', BundleController::class);
 
     Route::resource('codes', PromoCodeController::class);
+
+    Route::resource('orders', OrderController::class);
 
 });
 

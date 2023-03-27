@@ -20,7 +20,7 @@ class Order extends Model
     const INPROGRESS = 'in-progress';
     const DELIVERED = 'delivered';
     const COMPLETED = 'completed';
-    const CANCELLED = 'cancelled';
+    const CANCELED = 'canceled';
 
     public function user()
     {

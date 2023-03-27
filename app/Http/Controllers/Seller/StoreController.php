@@ -13,7 +13,10 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $store = Store::where('seller_id', auth('seller')->id())->with('branches')->first();
+        $store = Store::query()
+            ->where('seller_id', auth('seller')->id())
+            ->with(['branches' => fn ($q) => $q->withCount('activeOrders as orders_count') ])
+            ->first();
 
         $categories = auth('seller')->user()->myStore->categories()->paginate();
 

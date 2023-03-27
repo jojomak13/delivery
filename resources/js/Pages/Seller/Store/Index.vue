@@ -59,7 +59,7 @@ const deleteBranch = (branch) => {
                             </div>
                             <div>
                                 <h6 class="font-medium text-gray-900">{{ t('app.order.title') }}</h6>
-                                <span class="font-semibold text-3xl text-indigo-600">456</span>
+                                <Link :href="route('seller.orders.index', {branch_id: branch.id})" class="font-semibold text-3xl text-indigo-600">{{ branch.orders_count }}</Link>
                             </div>
                         </div>
                         <div>
