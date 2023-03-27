@@ -13,7 +13,7 @@ class Order extends Model
 
     protected $casts= [
         'location' => 'json',
-        'items' => 'collect'
+        'items' => 'json'
     ];
 
     const PENDING = 'pending';

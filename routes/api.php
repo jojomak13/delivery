@@ -52,6 +52,6 @@ Route::prefix('user')->group(function(){
         
         Route::post('code/check', [PromoCodeController::class, 'check']);
 
-        Route::apiResource('orders', OrderController::class)->except(['destroy']);
+        Route::apiResource('orders', OrderController::class)->except(['destroy', 'update']);
     });
 });

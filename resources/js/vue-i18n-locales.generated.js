@@ -44,7 +44,7 @@ export default {
                 "update": "Update Branch"
             },
             "order": {
-                "title": "orders"
+                "created": "Order created successfully"
             },
             "edit": "Edit",
             "delete": "Delete",
@@ -160,7 +160,7 @@ export default {
                 "update": "Обновить ветку"
             },
             "order": {
-                "title": "Заказы"
+                "created": "Заказ успешно создан"
             },
             "edit": "Редактировать",
             "delete": "Удалить",

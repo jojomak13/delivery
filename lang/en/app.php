@@ -108,6 +108,9 @@ return [
         'finished' => 'This promo code reached the maximum usage',
         'expired' => 'This promo code expired',
     ],
+    'order' => [
+        'created' => 'Order created successfully',
+    ],
     'usage' => 'Usage',
     'end_date' => 'End Date',
     'limit' => 'Limit',

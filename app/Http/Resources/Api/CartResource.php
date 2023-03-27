@@ -29,13 +29,16 @@ class CartResource extends JsonResource
 
         $total = $subTotal + (float) $branch?->delivery_cost;
 
-        if($code) $total -= (float) ($code->amount > $total? $total : $code->amount);
+        if(isset($code)) $total -= (float) ($code->amount > $total? $total : $code->amount);
 
         return [
             'items' => $items,
+            'branch_id' => $this->when($this->resource->count(), function(){
+                return $this->resource->first()->branch_id;
+            }),
             'sub_total' => $subTotal,
             'delivery_price' => (float) $branch?->delivery_cost,
-            'discount' => $code? $code->amount : 0,
+            'discount' => isset($code)? $code->amount : 0,
             'total_price' => $total,
             'estimated_time' => $branch?->delivery_period . ' ' . __('app.minutes'),
         ];

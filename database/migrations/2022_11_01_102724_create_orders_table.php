@@ -24,6 +24,7 @@ return new class extends Migration
             $table->json('location');
             $table->json('items');
             $table->string('status')->default(Order::PENDING);
+            $table->unsignedBigInteger('promo_code_id')->nullable();
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->cascadeOnUpdate()
