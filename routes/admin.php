@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\BundleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SellerController;
@@ -25,4 +26,6 @@ Route::middleware('auth:admin')->group(function(){
     Route::resource('categories', CategoryController::class)->except(['show']);
 
     Route::resource('products', ProductController::class)->except(['show', 'create', 'store']);
+
+    Route::resource('bundles', BundleController::class)->except(['show', 'create', 'store']);
 });

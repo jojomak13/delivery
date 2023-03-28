@@ -23,6 +23,7 @@ class EditBundleResource extends JsonResource
             'description' => $this->description,
             'allowed_items' => $this->allowed_items,
             'available' => $this->available,
+            'approved' => $this->approved,
             'products' => BundleProductsResource::collection($this->products)
         ];
     }
