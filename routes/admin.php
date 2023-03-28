@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SellerController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,4 +23,6 @@ Route::middleware('auth:admin')->group(function(){
     Route::resource('sellers', SellerController::class)->except(['show', 'create', 'store']);
 
     Route::resource('categories', CategoryController::class)->except(['show']);
+
+    Route::resource('products', ProductController::class)->except(['show', 'create', 'store']);
 });
