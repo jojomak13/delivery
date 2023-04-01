@@ -24,6 +24,7 @@ class ProductsResource extends JsonResource
             'size' => $this->size,
             'image' => $this->image_url,
             'category_id' => $this->category_id,
+            'types' => ProductTypesResource::collection($this->types),
             'favorite_id' => $user? $user->favorites()
                 ->where('favorable_type', Favorite::TYPES['product'])
                 ->where('favorable_id', $this->id)

@@ -23,6 +23,7 @@ class StoreController extends Controller
             'work_time' => $store->work_time,
             'categories' => CategoriesResource::collection($store->categories),
             'products' => ProductsResource::collection(Product::query()
+                ->with('types')
                 ->where('store_id', $store->id)
                 // TODO:: uncomment this
 //                ->where('approved', true)
@@ -33,7 +34,7 @@ class StoreController extends Controller
 
     public function show(Product $product)
     {
-        $product->load('extras');
+        $product->load(['extras', 'types']);
 
         return response()->json($product);
     }
