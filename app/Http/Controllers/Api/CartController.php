@@ -92,7 +92,7 @@ class CartController extends Controller
     {
         abort_unless($cart->user_id === $request->user()->id, 403);
 
-        $data = $request->validate(['quantity' => 'required|integer']);
+        $data = $request->validate(['quantity' => 'required|integer|min:1']);
 
         if($cart->quantity + $data['quantity'] <= 0){
             throw ValidationException::withMessages([
@@ -100,9 +100,7 @@ class CartController extends Controller
             ]);
         }
             
-        $cart->update([
-            'quantity' => $cart->quantity + $data['quantity']
-        ]);
+        $cart->update(['quantity' => $data['quantity']]);
 
         return new CartResource($request->user()->cart->load('cartable'));
     }
