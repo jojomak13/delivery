@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\PromoCodeController;
 use App\Http\Controllers\Api\StoreController;
+use App\Http\Controllers\Api\TopRatedController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,8 @@ Route::get('product/{product}', [StoreController::class, 'show']);
 
 Route::get('bundles', [BundleController::class, 'index']);
 Route::get('bundles/{bundle}', [BundleController::class, 'show']);
+
+Route::get('top-rated', TopRatedController::class);
 
 
 Route::prefix('user')->group(function(){
