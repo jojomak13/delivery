@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BundleController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\FavoriteController;
+use App\Http\Controllers\Api\GlobalSearchController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\PromoCodeController;
@@ -32,6 +33,8 @@ Route::get('bundles', [BundleController::class, 'index']);
 Route::get('bundles/{bundle}', [BundleController::class, 'show']);
 
 Route::get('top-rated', TopRatedController::class);
+
+Route::get('search', GlobalSearchController::class);
 
 
 Route::prefix('user')->group(function(){
