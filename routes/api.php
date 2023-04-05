@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\StoreController;
 use App\Http\Controllers\Api\TopRatedController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Support\Facades\Route;
+use Twilio\Rest\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,21 +42,23 @@ Route::prefix('user')->group(function(){
     Route::prefix('auth')->group(function(){
         Route::post('login', [AuthController::class, 'login']);
         Route::post('register', [AuthController::class, 'register']);
+        Route::post('forget-password', [AuthController::class, 'forget']);
+        Route::post('reset', [AuthController::class, 'reset']);
     });
-    
+
     Route::middleware('auth:sanctum')->group(function(){
         Route::prefix('auth')->group(function() {
             Route::post('logout', [AuthController::class, 'logout']);
         });
-        
+
         // Profile
         Route::get('profile', [ProfileController::class, 'edit']);
         Route::patch('profile', [ProfileController::class, 'update']);
-        
+
         Route::apiResource('favorites', FavoriteController::class)->except(['update']);
-        
+
         Route::apiResource('cart', CartController::class)->except(['show']);
-        
+
         Route::post('code/check', [PromoCodeController::class, 'check']);
 
         Route::apiResource('orders', OrderController::class)->except(['destroy', 'update']);

@@ -121,7 +121,7 @@ return [
     'discount_price' => 'Discount',
     'total_price' => 'Total',
     'created_at' => 'Created At',
-    'pricing' => 'Pricing', 
+    'pricing' => 'Pricing',
     'street' => 'Street',
     'floor_number' => 'Floor Number',
     'phone_number' => 'Phone Number',
@@ -133,4 +133,10 @@ return [
     'completed' => 'Completed',
     'canceled' => 'Canceled',
     'pending' => 'Pending',
+    'auth' => [
+        'otp_sent_successfully' => 'OTP code sent successfully to your phone number',
+        'otp_sent_failed' => 'Oops, something went wrong please try again',
+        'password_reset_successfully' => 'Your password reset successfully',
+        'invalid_otp' => 'Invalid OTP code',
+    ]
 ];

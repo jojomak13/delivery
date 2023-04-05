@@ -121,7 +121,7 @@ return [
     'discount_price' => 'Скидка',
     'total_price' => 'Общий',
     'created_at' => 'Создан в',
-    'pricing' => 'Цены', 
+    'pricing' => 'Цены',
     'street' => 'Улица',
     'floor_number' => 'Номер этажа',
     'phone_number' => 'Номер телефона',
@@ -133,4 +133,10 @@ return [
     'completed' => 'Завершенный',
     'canceled' => 'отменен',
     'pending' => 'В ожидании',
+    'auth' => [
+        'otp_sent_successfully' => 'OTP-код успешно отправлен на ваш номер телефона',
+        'otp_sent_failed' => 'Упс, что-то пошло не так, попробуйте еще раз',
+        'password_reset_successfully' => 'Ваш пароль успешно сброшен',
+        'invalid_otp' => 'Неверный OTP-код',
+    ]
 ];

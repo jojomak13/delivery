@@ -132,7 +132,13 @@ export default {
             "delivered": "Delivered",
             "completed": "Completed",
             "canceled": "Canceled",
-            "pending": "Pending"
+            "pending": "Pending",
+            "auth": {
+                "otp_sent_successfully": "OTP code sent successfully to your phone number",
+                "otp_sent_failed": "Oops, something went wrong please try again",
+                "password_reset_successfully": "Your password reset successfully",
+                "invalid_otp": "Invalid OTP code"
+            }
         }
     },
     "ru": {
@@ -268,7 +274,13 @@ export default {
             "delivered": "Доставленный",
             "completed": "Завершенный",
             "canceled": "отменен",
-            "pending": "В ожидании"
+            "pending": "В ожидании",
+            "auth": {
+                "otp_sent_successfully": "OTP-код успешно отправлен на ваш номер телефона",
+                "otp_sent_failed": "Упс, что-то пошло не так, попробуйте еще раз",
+                "password_reset_successfully": "Ваш пароль успешно сброшен",
+                "invalid_otp": "Неверный OTP-код"
+            }
         }
     }
 }
