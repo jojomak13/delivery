@@ -80,18 +80,25 @@ class AuthController extends Controller
     public function forget(Request $request, Client $twilio): JsonResponse
     {
         $request->validate([
-            'phone' => 'required|string|max:255'
+            'email' => 'required|email|string|max:255'
         ]);
 
         $user = User::query()
-                ->where('phone', $request->input('phone'))
+                ->where('email', $request->input('email'))
                 ->firstOrFail();
 
-        $verification = $twilio->verify->v2->services(config('services.twilio.verify_sid'))
-            ->verifications
-            ->create($user->phone, 'sms');
+        try {
+            $verification = $twilio->verify->v2->services(config('services.twilio.verify_sid'))
+                ->verifications
+                ->create($user->phone, 'sms');
 
-        $sentSuccess = $verification->status === 'pending';
+            $sentSuccess = $verification->status === 'pending';
+        } catch(TwilioException $e){
+            return response()->json([
+                'status' => false,
+                'msg' => __('app.auth.invalid_otp')
+            ], 400);
+        }
 
         return response()->json([
             'status' => $sentSuccess,
@@ -107,24 +114,25 @@ class AuthController extends Controller
     public function reset(Request $request, Client $twilio): JsonResponse
     {
         $request->validate([
-            'phone' => 'required|string|max:255',
+            'email' => 'required|email|string|max:255',
             'otp' => 'required|string|max:255',
             'password' => 'required|string|max:255|confirmed',
         ]);
 
         $user = User::query()
-            ->where('phone', $request->input('phone'))
+            ->where('email', $request->input('email'))
             ->firstOrFail();
 
         try {
             $verification = $twilio->verify->v2->services(config('services.twilio.verify_sid'))
                 ->verificationChecks
-                ->create(['To' => $request->input('phone'), 'Code' => $request->input('otp')]);
+                ->create(['To' => $user->phone, 'Code' => $request->input('otp')]);
 
             $isValid = $verification->status === 'approved';
         } catch (TwilioException $e) {
-            if($e->getCode() != 20404)
+            if($e->getCode() != 20404){
                 Log::error($e->getMessage());
+            }
 
             return response()->json([
                 'status' => false,
@@ -138,7 +146,7 @@ class AuthController extends Controller
         return response()->json([
             'status' => $isValid,
             'msg' => $isValid? __('app.auth.password_reset_successfully') : __('app.auth.otp_sent_failed'),
-        ], $isValid? 201 : 500);
+        ], $isValid? 201 : 400);
     }
 
     /**
