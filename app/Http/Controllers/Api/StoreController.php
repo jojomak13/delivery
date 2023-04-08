@@ -11,16 +11,33 @@ use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
-    public function index(Store $store)
+    public function index(Store $store, Request $request)
     {
-        $store->load(['categories']);
+        $request->validate([
+            'lat' => 'required',
+            'long' => 'required',
+        ]);
 
+        $store->load(['categories', 'branches']);
+
+        $branches = $store->branches->filter(function($store){
+            return distance($store->location['lat'], $store->location['long'], request()->input('lat'), request()->input('long')) <= $store->delivery_distance;
+        });
+
+        abort_unless($branches->count(), 404);
+
+        $branch = $branches->first();
+        
         return response()->json([
             'id' => $store->id,
             'name' => $store->name,
             'description' => $store->description,
             'logo' => $store->logo_url,
             'work_time' => $store->work_time,
+            'branch' => [
+                'id' => $branch->id,
+                'name' => $branch->name 
+            ],
             'categories' => CategoriesResource::collection($store->categories),
             'products' => ProductsResource::collection(Product::query()
                 ->with('types')

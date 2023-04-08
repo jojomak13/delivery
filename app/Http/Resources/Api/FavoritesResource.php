@@ -19,11 +19,12 @@ class FavoritesResource extends JsonResource
             return [
                 'id' => $this->id,
                 'store_id' => $this->favorable->id,
+                'branch_id' => $this->branch_id, 
                 'name' => $this->favorable->name,
                 'description' => $this->favorable->description,
                 'image' => $this->favorable->logo_url,
             ];
-        else
+            else
             return [
                 'id' => $this->id,
                 'product_id' => $this->favorable->id,
@@ -31,7 +32,8 @@ class FavoritesResource extends JsonResource
                 'description' => $this->favorable->description,
                 'size' => $this->favorable->size,
                 'image' => $this->favorable->image_url,
-                'category_id' => $this->favorable->category_id
+                'category_id' => $this->favorable->category_id,
+                'branch_id' => $this->branch_id, 
             ];
     }
 }
