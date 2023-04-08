@@ -94,6 +94,8 @@ class AuthController extends Controller
 
             $sentSuccess = $verification->status === 'pending';
         } catch(TwilioException $e){
+            Log::error($e->getMessage());
+            
             return response()->json([
                 'status' => false,
                 'msg' => __('app.auth.invalid_otp')
