@@ -28,7 +28,7 @@ class FavoriteController extends Controller
         $favorites = $request->user()
                 ->favorites()
                 ->where('favorable_type', $type)
-                ->with('favorable')
+                ->with(['favorable', 'branch'])
                 ->get();
 
         return response()->json(FavoritesResource::collection($favorites));
