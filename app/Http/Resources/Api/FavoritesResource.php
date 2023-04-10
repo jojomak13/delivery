@@ -19,7 +19,10 @@ class FavoritesResource extends JsonResource
             return [
                 'id' => $this->id,
                 'store_id' => $this->favorable->id,
-                'branch_id' => $this->branch_id, 
+                'branch' => [
+                    'id' => $this->branch_id,
+                    'delivery_distance' => $this->branch->delivery_distance . ' ' . __('app.minutes'),
+                ],
                 'name' => $this->favorable->name,
                 'description' => $this->favorable->description,
                 'image' => $this->favorable->logo_url,
