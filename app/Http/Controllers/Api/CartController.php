@@ -36,8 +36,9 @@ class CartController extends Controller
         $cartItem = $request->user()->cart()
             ->where('cartable_id', $request->input('cartable_id'))
             ->where('cartable_type', $type)
+            ->whereJsonContains('options', request()->input('options'))
             ->first();
-
+        
         if($cartItem)
             $this->updateQuantity($cartItem, $request->input('quantity'));
         else 
