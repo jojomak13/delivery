@@ -36,7 +36,8 @@ class FavoritesResource extends JsonResource
                 'size' => $this->favorable->size,
                 'image' => $this->favorable->image_url,
                 'category_id' => $this->favorable->category_id,
-                'branch_id' => $this->branch_id, 
+                'branch_id' => $this->branch_id,
+                'types' => ProductTypesResource::collection($this->favorable->types)
             ];
     }
 }
