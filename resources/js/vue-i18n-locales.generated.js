@@ -138,6 +138,11 @@ export default {
                 "otp_sent_failed": "Oops, something went wrong please try again",
                 "password_reset_successfully": "Your password reset successfully",
                 "invalid_otp": "Invalid OTP code"
+            },
+            "admin": {
+                "title": "Admins",
+                "create": "Create Admin",
+                "update": "Update Admin"
             }
         }
     },
@@ -280,6 +285,11 @@ export default {
                 "otp_sent_failed": "Упс, что-то пошло не так, попробуйте еще раз",
                 "password_reset_successfully": "Ваш пароль успешно сброшен",
                 "invalid_otp": "Неверный OTP-код"
+            },
+            "admin": {
+                "title": "Админы",
+                "create": "Создать администратора",
+                "update": "Обновить администратора"
             }
         }
     }

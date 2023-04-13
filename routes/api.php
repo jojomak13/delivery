@@ -12,7 +12,6 @@ use App\Http\Controllers\Api\StoreController;
 use App\Http\Controllers\Api\TopRatedController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Support\Facades\Route;
-use Twilio\Rest\Client;
 
 /*
 |--------------------------------------------------------------------------

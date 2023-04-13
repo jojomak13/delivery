@@ -138,5 +138,10 @@ return [
         'otp_sent_failed' => 'Oops, something went wrong please try again',
         'password_reset_successfully' => 'Your password reset successfully',
         'invalid_otp' => 'Invalid OTP code',
-    ]
+    ],
+    'admin' => [
+        'title' => 'Admins',
+        'create' => 'Create Admin',
+        'update' => 'Update Admin'
+    ],
 ];
