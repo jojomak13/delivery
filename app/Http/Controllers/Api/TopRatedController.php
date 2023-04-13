@@ -29,8 +29,7 @@ class TopRatedController extends Controller
             ->join('stores', 'stores.id', '=', 'branches.store_id')
             ->join('sellers', 'sellers.id', '=', 'stores.seller_id')
             ->whereIn('stores.id', $storeIds)
-            // TODO:: un-comment it
-//            ->where('approved', true)
+            ->where('approved', true)
             ->get()
             ->filter(function($store){
                 return distance($store->location['lat'], $store->location['long'], request()->input('lat'), request()->input('long')) <= $store->delivery_distance;

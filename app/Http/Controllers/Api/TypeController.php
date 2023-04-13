@@ -40,8 +40,7 @@ class TypeController extends Controller
             ->when($request->input('search'), function($q){
                 $q->where('stores.name', 'like', '%' . request()->input('search') . '%');
             })
-            // TODO:: un-comment it
-//            ->where('approved', true)
+            ->where('approved', true)
             ->get()
             ->filter(function($store){
                 return distance($store->location['lat'], $store->location['long'], request()->input('lat'), request()->input('long')) <= $store->delivery_distance;

@@ -42,8 +42,7 @@ class StoreController extends Controller
             'products' => ProductsResource::collection(Product::query()
                 ->with('types')
                 ->where('store_id', $store->id)
-                // TODO:: uncomment this
-//                ->where('approved', true)
+                ->where('approved', true)
                 ->where('available', true)
                 ->get())
         ]);

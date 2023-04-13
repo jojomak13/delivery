@@ -21,8 +21,7 @@ class BundleController extends Controller
                 ->select('bundles.*', 'branches.location', 'branches.delivery_distance', 'branches.id as branch_id')
                 ->join('stores', 'bundles.store_id', '=', 'stores.id')
                 ->join('branches', 'branches.store_id', '=', 'stores.id')
-                // TODO:: un-comment this
-    //            ->where('approved', true)
+                ->where('approved', true)
                 ->latest()
                 ->get()
                 ->filter(function($bundle){
