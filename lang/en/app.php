@@ -48,6 +48,10 @@ return [
         'title' => 'Orders',
         'created' => 'Order created successfully',
         'show' => 'Order Details',
+        'notification' => [
+            'title' => 'Order from :store',
+            'body' => 'Your order status changed to :status',
+        ]
     ],
     'edit' => 'Edit',
     'delete' => 'Delete',

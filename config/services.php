@@ -35,5 +35,9 @@ return [
         'account_sid' => env('TWILIO_ACCOUNT_SID'),
         'auth_token' => env('TWILIO_AUTH_TOKEN'),
         'verify_sid' => env('TWILIO_VERIFY_SID')
+    ],
+
+    'fcm' => [
+        'server_token' => env('FCM_SERVER_TOKEN'),
     ]
 ];

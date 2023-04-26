@@ -47,7 +47,11 @@ export default {
             "order": {
                 "title": "Orders",
                 "created": "Order created successfully",
-                "show": "Order Details"
+                "show": "Order Details",
+                "notification": {
+                    "title": "Order from {store}",
+                    "body": "Your order status changed to {status}"
+                }
             },
             "edit": "Edit",
             "delete": "Delete",
@@ -194,7 +198,11 @@ export default {
             "order": {
                 "title": "Заказы",
                 "created": "Заказ успешно создан",
-                "show": "Информация для заказа"
+                "show": "Информация для заказа",
+                "notification": {
+                    "title": "Заказ от {store}",
+                    "body": "Статус вашего заказа изменился на {status}"
+                }
             },
             "edit": "Редактировать",
             "delete": "Удалить",

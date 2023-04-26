@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\BundleController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\GlobalSearchController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\PromoCodeController;
@@ -61,5 +62,7 @@ Route::prefix('user')->group(function(){
         Route::post('code/check', [PromoCodeController::class, 'check']);
 
         Route::apiResource('orders', OrderController::class)->except(['destroy', 'update']);
+
+        Route::get('notifications', NotificationController::class);
     });
 });

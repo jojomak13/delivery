@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Notifications\OrderNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Inertia\Inertia;
 
 class OrderController extends Controller
@@ -47,5 +49,7 @@ class OrderController extends Controller
         abort_unless($order->store_id === $store->id, 404);
 
         $order->update(['status' => $request->input('status')]);
+
+        Notification::sendNow([$order->user], new OrderNotification($order));
     }
 }
