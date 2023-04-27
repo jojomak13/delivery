@@ -4,11 +4,8 @@ namespace App\Notifications;
 
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class OrderNotification extends Notification
 {
@@ -48,7 +45,11 @@ class OrderNotification extends Notification
             ->withHeaders(['Authorization' => 'key=' . config('services.fcm.server_token')])
             ->post('https://fcm.googleapis.com/fcm/send', [
                 'to' => $this->order->user->fc_token,
-                'data' => $data
+                'notification' => [
+                    ...$data,
+                    'content_available' => true,
+                    'priority' => 'high'
+                ]
             ]);
         
 
