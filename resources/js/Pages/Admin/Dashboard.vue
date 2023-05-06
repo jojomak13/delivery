@@ -7,6 +7,12 @@ const { t } = useI18n()
 
 defineProps(['stats'])
 
+/**
+ * bg-pink-600
+ * bg-purple-600
+ * bg-yellow-500
+ * bg-green-500
+ */
 </script>
 
 <template>
