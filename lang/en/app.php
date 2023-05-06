@@ -148,4 +148,11 @@ return [
         'create' => 'Create Admin',
         'update' => 'Update Admin'
     ],
+    'stats' => [
+        'stores_count' => 'Stores Count',
+        'products_count' => 'Products Count',
+        'bundles_count' => 'Bundles Count',
+        'orders_count' => 'Orders Count',
+    ],
+    'record' => 'Record',
 ];

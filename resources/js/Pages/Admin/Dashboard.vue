@@ -1,9 +1,11 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/Admin/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
-import {useI18n} from "vue-i18n";
+import { useI18n } from "vue-i18n";
 
 const { t } = useI18n()
+
+defineProps(['stats'])
 
 </script>
 
@@ -17,10 +19,19 @@ const { t } = useI18n()
             </h2>
         </template>
 
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white border-b border-gray-200">
-                You're logged in!
-            </div>
-        </div>
+        <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+            <li v-for="project in stats" :key="project.name" class="col-span-1 flex rounded-md shadow-sm">
+                <div
+                    :class="[project.bgColor, 'flex w-16 flex-shrink-0 items-center justify-center rounded-l-md text-sm font-medium text-white']">
+                    {{ project.initials }}</div>
+                <div
+                    class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
+                    <div class="flex-1 truncate px-4 py-2 text-sm">
+                        <span class="font-medium text-gray-900 hover:text-gray-600">{{ t(project.name) }}</span>
+                        <p class="text-gray-500">{{ project.count }} {{ t('app.record') }}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </AuthenticatedLayout>
 </template>

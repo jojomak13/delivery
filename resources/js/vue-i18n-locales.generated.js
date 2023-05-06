@@ -147,7 +147,14 @@ export default {
                 "title": "Admins",
                 "create": "Create Admin",
                 "update": "Update Admin"
-            }
+            },
+            "stats": {
+                "stores_count": "Stores Count",
+                "products_count": "Products Count",
+                "bundles_count": "Bundles Count",
+                "orders_count": "Orders Count"
+            },
+            "record": "Record"
         }
     },
     "ru": {
@@ -298,7 +305,14 @@ export default {
                 "title": "Админы",
                 "create": "Создать администратора",
                 "update": "Обновить администратора"
-            }
+            },
+            "stats": {
+                "stores_count": "Количество магазинов",
+                "products_count": "Количество продуктов",
+                "bundles_count": "Количество пакетов",
+                "orders_count": "Количество заказов"
+            },
+            "record": "Записывать"
         }
     }
 }
