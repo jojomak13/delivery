@@ -47,6 +47,7 @@ const save = () => {
                         <div class="md:col-span-1 mb-4">
                             <InputLabel for="image" :value="t('app.image')" />
                             <TextInput id="image" type="file" class="mt-1 block w-full" @input="form.image = $event.target.files[0]" />
+                            <span class="text-gray-500 text-sm">{{ $t('app.input_file_hint') }}</span>
                             <InputError class="mt-2" :message="form.errors.image" />
                         </div>
 

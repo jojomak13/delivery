@@ -152,9 +152,11 @@ export default {
                 "stores_count": "Stores Count",
                 "products_count": "Products Count",
                 "bundles_count": "Bundles Count",
-                "orders_count": "Orders Count"
+                "orders_count": "Orders Count",
+                "promo_codes_count": "Promo Codes Count"
             },
-            "record": "Record"
+            "record": "Record",
+            "input_file_hint": "Image max size: 2MB with dimensions 250x250"
         }
     },
     "ru": {
@@ -310,9 +312,11 @@ export default {
                 "stores_count": "Количество магазинов",
                 "products_count": "Количество продуктов",
                 "bundles_count": "Количество пакетов",
-                "orders_count": "Количество заказов"
+                "orders_count": "Количество заказов",
+                "promo_codes_count": "Количество промокодов"
             },
-            "record": "Записывать"
+            "record": "Записывать",
+            "input_file_hint": "Максимальный размер изображения: 2 МБ с размерами 250x250."
         }
     }
 }

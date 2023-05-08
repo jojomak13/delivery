@@ -50,6 +50,7 @@ const save = () => {
                         <div class="md:col-span-1 mb-4">
                             <InputLabel for="logo" :value="t('app.logo')" />
                             <TextInput id="logo" type="file" class="mt-1 block w-full" @input="form.logo = $event.target.files[0]" />
+                            <span class="text-gray-500 text-sm">{{ $t('app.input_file_hint') }}</span>
                             <InputError class="mt-2" :message="form.errors.logo" />
                         </div>
 

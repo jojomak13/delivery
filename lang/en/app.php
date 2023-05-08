@@ -153,6 +153,8 @@ return [
         'products_count' => 'Products Count',
         'bundles_count' => 'Bundles Count',
         'orders_count' => 'Orders Count',
+        'promo_codes_count' => 'Promo Codes Count',
     ],
     'record' => 'Record',
+    'input_file_hint' => 'Image max size: 2MB with dimensions 250x250',
 ];
