@@ -24,7 +24,7 @@ class DashboardController extends Controller
                 'name' => 'app.stats.promo_codes_count', 
                 'initials' => 'PCC', 
                 'count' => PromoCode::query()
-                    ->where('store_id', $store->id)
+                    ->where('store_id', $store?->id)
                     ->where('status', PromoCode::AVAILABLE)
                     ->count(), 
                 'bgColor' => 'bg-pink-600'
@@ -32,20 +32,20 @@ class DashboardController extends Controller
             [
                 'name' => 'app.stats.products_count', 
                 'initials' => 'PC', 
-                'count' => Product::where('store_id', $store->id)->count(), 
+                'count' => Product::where('store_id', $store?->id)->count(), 
                 'bgColor' => 'bg-purple-600'
             ],
             [
                 'name' => 'app.stats.bundles_count', 
                 'initials' => 'BC', 
-                'count' => Bundle::where('store_id', $store->id)->count(), 
+                'count' => Bundle::where('store_id', $store?->id)->count(), 
                 'bgColor' => 'bg-yellow-500'
             ],
             [
                 'name' => 'app.stats.orders_count', 
                 'initials' => 'OC', 
                 'count' => Order::query()
-                    ->where('store_id', $store->id)
+                    ->where('store_id', $store?->id)
                     ->where('status', Order::PENDING)
                     ->count(), 
                 'bgColor' => 'bg-green-500'
@@ -53,7 +53,7 @@ class DashboardController extends Controller
         ];
 
         return Inertia::render('Dashboard', [
-            'stats' => $stats
+            'stats' => $store? $stats : [],
         ]);
     }
 }
