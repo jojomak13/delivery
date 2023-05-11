@@ -148,6 +148,10 @@ return [
         'create' => 'Create Admin',
         'update' => 'Update Admin'
     ],
+    'user' => [
+        'title' => 'Users',
+        'update' => 'Update User'
+    ],
     'stats' => [
         'stores_count' => 'Stores Count',
         'products_count' => 'Products Count',

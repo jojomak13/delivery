@@ -148,6 +148,10 @@ export default {
                 "create": "Create Admin",
                 "update": "Update Admin"
             },
+            "user": {
+                "title": "Users",
+                "update": "Update User"
+            },
             "stats": {
                 "stores_count": "Stores Count",
                 "products_count": "Products Count",
@@ -307,6 +311,10 @@ export default {
                 "title": "Админы",
                 "create": "Создать администратора",
                 "update": "Обновить администратора"
+            },
+            "user": {
+                "title": "Пользователи",
+                "update": "Обновить пользователя"
             },
             "stats": {
                 "stores_count": "Количество магазинов",
