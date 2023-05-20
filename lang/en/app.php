@@ -55,6 +55,7 @@ return [
     ],
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'restore' => 'Restore',
     'minutes' => 'Minutes',
     'sure' => 'Are you sure?',
     'category' => [
@@ -88,6 +89,7 @@ return [
     'seller' => [
         'title' => 'Sellers',
         'update' => 'Update Seller',
+        'unapproved' => 'Unapproved Sellers',
     ],
     'status' => 'Status',
     'active' => 'Active',

@@ -35,4 +35,5 @@ Route::middleware('auth:admin')->group(function(){
     Route::resource('codes', PromoCodeController::class);
 
     Route::resource('users', UserController::class)->except(['show', 'create']);
+    Route::post('users/{user}', [UserController::class, 'restore'])->name('users.restore')->withTrashed();
 });

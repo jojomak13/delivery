@@ -55,6 +55,7 @@ export default {
             },
             "edit": "Edit",
             "delete": "Delete",
+            "restore": "Restore",
             "minutes": "Minutes",
             "sure": "Are you sure?",
             "category": {
@@ -87,7 +88,8 @@ export default {
             "types": "Types",
             "seller": {
                 "title": "Sellers",
-                "update": "Update Seller"
+                "update": "Update Seller",
+                "unapproved": "Unapproved Sellers"
             },
             "status": "Status",
             "active": "Active",
@@ -219,6 +221,7 @@ export default {
             },
             "edit": "Редактировать",
             "delete": "Удалить",
+            "restore": "Восстановить",
             "minutes": "Минуты",
             "sure": "Ты уверен?",
             "category": {
@@ -251,7 +254,8 @@ export default {
             "types": "Типы",
             "seller": {
                 "title": "Продавцы",
-                "update": "Обновить продавца"
+                "update": "Обновить продавца",
+                "unapproved": "Неутвержденные продавцы"
             },
             "status": "Положение дел",
             "active": "Активный",

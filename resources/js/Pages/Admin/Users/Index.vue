@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/Admin/AuthenticatedLayout.vue';
 import { Head, Link as InertiaLink } from '@inertiajs/inertia-vue3';
 import {useI18n} from "vue-i18n";
 import Link from '@/Components/Link.vue'
-import pagination from '@/Components/Pagination.vue'
+import Pagination from '@/Components/Pagination.vue'
 import { Inertia } from '@inertiajs/inertia';
 
 const { t } = useI18n()
@@ -14,6 +14,12 @@ const deleteUser = (user) => {
     if(!confirm(t('app.sure'))) return
 
     Inertia.delete(route('admin.users.destroy', user))
+}
+
+const restoreUser = (user) => {
+    if(!confirm(t('app.sure'))) return
+
+    Inertia.post(route('admin.users.restore', user))
 }
 </script>
 
@@ -57,7 +63,10 @@ const deleteUser = (user) => {
                                         <InertiaLink :href="route('admin.users.edit', user)" class="text-indigo-600 hover:text-indigo-900">
                                             {{ t('app.edit') }}
                                         </InertiaLink> |
-                                        <button @click="deleteUser(user)" class="text-red-600 hover:text-red-900">
+                                        <button v-if="user.deleted_at" @click="restoreUser(user)" class="text-red-600 hover:text-red-900">
+                                            {{ t('app.restore') }}
+                                        </button>
+                                        <button v-else @click="deleteUser(user)" class="text-red-600 hover:text-red-900">
                                             {{ t('app.delete') }}
                                         </button>
                                     </td>
@@ -78,7 +87,7 @@ const deleteUser = (user) => {
             </div>
 
             <div class="my-5">
-                <pagination :links="users.links" />
+                <Pagination :links="users.links" />
             </div>
 
         </div>

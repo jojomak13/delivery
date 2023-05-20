@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Bundle;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Seller;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -46,8 +47,15 @@ class DashboardController extends Controller
             ],
         ];
 
+        $sellers = Seller::query()
+            ->with('myStore:id,name,seller_id')
+            ->where('approved', false)
+            ->latest()
+            ->paginate(5);
+
         return Inertia::render('Admin/Dashboard', [
-            'stats' => $stats
+            'stats' => $stats,
+            'sellers' => $sellers,
         ]);
     }
 }

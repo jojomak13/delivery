@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::query()->latest()->paginate(10);
+        $users = User::query()->withTrashed()->latest()->paginate(10);
 
         return Inertia::render('Admin/Users/Index', [
             'users' => $users,
@@ -40,6 +40,13 @@ class UserController extends Controller
         }
 
         $user->update($data);
+
+        return redirect()->route('admin.users.index');
+    }
+
+    public function restore(User $user)
+    {
+        $user->restore();
 
         return redirect()->route('admin.users.index');
     }
