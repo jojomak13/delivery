@@ -44,17 +44,7 @@ class ProductController extends Controller
 
     public function update(Product $product, UpdateProductRequest $request)
     {
-        $data = $request->validated();
-
-        unset($data['image']);
-
-        $product->update($data);
-
-        $product->extras()->sync($request->input('extra'));
-        $product->types()->sync($request->input('types'));
-
-        if($request->hasFile('image'))
-            $product->updateImage($request->file('image'));
+        $product->update($request->validated());
 
         return redirect()->route('admin.products.index');
     }

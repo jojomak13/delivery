@@ -55,16 +55,7 @@ class BundleController extends Controller
 
     public function update(UpdateBundleRequest $request, Bundle $bundle)
     {
-        $data = $request->validated();
-
-        unset($data['image']);
-
-        $bundle->update($data);
-
-        $bundle->products()->sync($request->input('products'));
-
-        if($request->hasFile('image'))
-            $bundle->updateImage($request->file('image'));
+        $bundle->update($request->validated());
 
         return redirect()->route('admin.bundles.index');
     }

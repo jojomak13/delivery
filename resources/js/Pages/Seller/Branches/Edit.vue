@@ -73,6 +73,7 @@ const save = () => {
                         <div class="md:col-span-2 mb-4">
                             <InputLabel for="address" :value="t('app.address')" />
                             <TextArea id="address" type="text" class="mt-1 block w-full cursor-not-allowed" v-model="branch.address" disabled />
+                            <span class="text-gray-500 text-sm">{{ $t('app.textarea_hint') }}</span>
                         </div>
                     </div>
                     <div class="text-right">

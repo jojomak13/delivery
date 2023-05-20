@@ -12,7 +12,7 @@ return [
     'from' => 'From',
     'to' => 'To',
     'delivery_cost' => 'Delivery Cost',
-    'delivery_period' => 'Delivery Period',
+    'delivery_period' => 'Delivery Period (Minutes)',
     'address' => 'Address',
     'image' => 'Image',
     'price' => 'Price',
@@ -163,4 +163,5 @@ return [
     ],
     'record' => 'Record',
     'input_file_hint' => 'Image max size: 2MB with dimensions 250x250',
+    'textarea_hint' => 'Description size cannot be more than 280 characters.',
 ];

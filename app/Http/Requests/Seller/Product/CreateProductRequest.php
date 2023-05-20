@@ -30,10 +30,10 @@ class CreateProductRequest extends FormRequest
             'size.*.id' => 'required',
             'size.*.name' => 'required',
             'size.*.price' => 'required|numeric',
-            'extra' => 'required|array|min:1',
+            'extra' => 'nullable|array',
             'types' => 'nullable|array',
             'category_id' => 'required|exists:categories,id',
-            'description' => 'nullable|string|max:255',
+            'description' => 'required|string|max:255',
             'available' => 'required|boolean'
         ];
     }

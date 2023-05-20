@@ -24,14 +24,6 @@ class UpdateBundleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'image' => 'nullable|image',
-            'price' => 'required|integer',
-            'category_id' => 'required|exists:categories,id',
-            'description' => 'nullable|string|max:255',
-            'allowed_items' => 'required|integer',
-            'available' => 'required|boolean',
-            'products' => 'required|array|min:1',
             'approved' => 'required|boolean',
         ];
     }

@@ -12,7 +12,7 @@ export default {
             "from": "From",
             "to": "To",
             "delivery_cost": "Delivery Cost",
-            "delivery_period": "Delivery Period",
+            "delivery_period": "Delivery Period (Minutes)",
             "address": "Address",
             "image": "Image",
             "price": "Price",
@@ -162,7 +162,8 @@ export default {
                 "promo_codes_count": "Promo Codes Count"
             },
             "record": "Record",
-            "input_file_hint": "Image max size: 2MB with dimensions 250x250"
+            "input_file_hint": "Image max size: 2MB with dimensions 250x250",
+            "textarea_hint": "Description size cannot be more than 280 characters."
         }
     },
     "ru": {
@@ -178,7 +179,7 @@ export default {
             "from": "Из",
             "to": "К",
             "delivery_cost": "Стоимость доставки",
-            "delivery_period": "Период доставки",
+            "delivery_period": "Период доставки (Минуты)",
             "address": "Адрес",
             "image": "Изображение",
             "price": "Цена",
@@ -328,7 +329,8 @@ export default {
                 "promo_codes_count": "Количество промокодов"
             },
             "record": "Записывать",
-            "input_file_hint": "Максимальный размер изображения: 2 МБ с размерами 250x250."
+            "input_file_hint": "Максимальный размер изображения: 2 МБ с размерами 250x250.",
+            "textarea_hint": "Размер описания не может быть больше 280 символов."
         }
     }
 }
