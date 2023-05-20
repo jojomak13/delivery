@@ -25,7 +25,7 @@ class CreateCategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'image' => 'required|image',
+            'image' => 'nullable|image',
             'type' => 'required|in:store,product',
             'description' => 'nullable|string|max:255',
         ];
