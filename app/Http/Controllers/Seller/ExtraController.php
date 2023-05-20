@@ -81,7 +81,7 @@ class ExtraController extends Controller
 
         abort_if($extra->store_id !== $store->id, 404);
 
-        Storage::disk('public')->delete($extra->image);
+        Storage::disk('public')->delete($extra->image ?? '');
 
         $extra->delete();
 
