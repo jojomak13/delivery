@@ -26,6 +26,7 @@ class UpdateStoreRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'logo' => 'nullable|image',
+            'types' => ['required', 'array', 'min:1'],
             'description' => 'required|string|max:255',
             'from' => 'required',
             'to' => 'required'

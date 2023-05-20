@@ -26,7 +26,7 @@ class CreateStoreRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'logo' => 'required|image',
-            'type_id' => 'required|exists:types,id',
+            'types' => ['required', 'array', 'min:1'],
             'description' => 'required|string|max:255',
             'from' => 'required',
             'to' => 'required'

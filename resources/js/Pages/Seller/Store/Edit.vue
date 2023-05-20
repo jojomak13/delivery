@@ -7,7 +7,8 @@ import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextArea from "@/Components/TextArea.vue";
-import SelectInput from "@/Components/SelectInput.vue";
+import 'vue-select/dist/vue-select.css';
+import VSelect from 'vue-select'
 
 const { t } = useI18n()
 
@@ -17,6 +18,7 @@ const form  = useForm({
     _method: 'patch',
     name: store.name,
     logo: '',
+    types: store.types,
     description: store.description,
     from: store.work_time.from,
     to: store.work_time.to
@@ -55,12 +57,9 @@ const save = () => {
                         </div>
 
                         <div class="md:col-span-1 mb-4">
-                            <InputLabel for="type_id" :value="t('app.type')" />
-                            <SelectInput id="type_id" class="mt-1 block w-full" v-model="store.type_id" disabled>
-                                <option value="">{{ t('app.select_option') }}</option>
-                                <option v-for="option in types" :key="option.id" :value="option.id">{{ option.name }}</option>
-                            </SelectInput>
-                            <InputError class="mt-2" :message="form.errors.type_id" />
+                            <InputLabel for="types" :value="t('app.type')" />
+                            <v-select multiple v-model="form.types" :reduce="option => option.id" label="name" :options="types"></v-select>
+                            <InputError class="mt-2" :message="form.errors.types" />
                         </div>
 
                         <div class="md:col-span-2 mb-4">

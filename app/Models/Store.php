@@ -18,6 +18,7 @@ class Store extends Model
 
     protected $casts = [
         'work_time' => 'json',
+        'types' => 'json',
     ];
 
     protected $attributes = [

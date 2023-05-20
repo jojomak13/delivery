@@ -60,8 +60,7 @@ class StoreController extends Controller
         if(!$store)
             return abort(4003);
 
-
-        $types = Type::select('id', 'name')->latest()->get();
+        $types = Type::select('id', 'name')->where('type', Type::TYPE_STORE)->latest()->get();
 
         return Inertia::render('Seller/Store/Edit', [
             'store' => $store,
@@ -77,6 +76,7 @@ class StoreController extends Controller
 
         $store->update([
             'name' => $data['name'],
+            'types' => $data['types'],
             'description' => $data['description'],
             'work_time' => [
                 'from' => $data['from'],

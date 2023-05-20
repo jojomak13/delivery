@@ -19,10 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('logo');
             $table->json('work_time');
-            $table->foreignId('type_id')
-                ->constrained('types')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->json('types');
             $table->foreignId('seller_id')
                 ->constrained('sellers')
                 ->cascadeOnUpdate()

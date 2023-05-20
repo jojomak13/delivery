@@ -17,7 +17,7 @@ class TypeController extends Controller
      */
     public function index(): JsonResponse
     {
-        $types = TypesResource::collection(Type::query()->latest()->get());
+        $types = TypesResource::collection(Type::query()->where('type', Type::TYPE_STORE)->latest()->get());
 
         return response()->json([
             'data' => $types,
@@ -36,7 +36,7 @@ class TypeController extends Controller
             ->select(['stores.id', 'stores.name', 'stores.logo', 'branches.id as branch_id', 'branches.name as branch_name', 'branches.delivery_cost', 'branches.delivery_period', 'branches.location', 'branches.store_id', 'branches.delivery_distance'])
             ->join('stores', 'stores.id', '=', 'branches.store_id')
             ->join('sellers', 'sellers.id', '=', 'stores.seller_id')
-            ->where('stores.type_id', $type->id)
+            ->whereJsonContains('stores.types', $type->id)
             ->when($request->input('search'), function($q){
                 $q->where('stores.name', 'like', '%' . request()->input('search') . '%');
             })
