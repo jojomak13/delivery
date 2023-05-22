@@ -53,9 +53,7 @@ const loadMap = () => {
 }
 
 onMounted(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-        form.location.lat = position.coords.latitude
-        form.location.long = position.coords.longitude
+    navigator.geolocation.getCurrentPosition((_position) => {
         loadMap()
     });
 })
