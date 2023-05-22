@@ -41,7 +41,8 @@ class CategoryController extends Controller
     {
         $type = Type::create($request->validated());
 
-        $type->updateImage($request->file('image'));
+        if($request->hasFile('image'))
+            $type->updateImage($request->file('image'));
 
         return redirect()->route('admin.categories.index');
     }

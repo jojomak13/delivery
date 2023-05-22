@@ -45,6 +45,7 @@ class CreateBundleRequest extends FormRequest
         $this->merge([
             'available' => $this->available === '1'? true : false,
             'products' => collect($this->products)
+                ->filter(fn($el) => $el['product'] || $el['size'])
                 ->mapWithKeys(fn($el) => [$el['product']['id'] => ['size' => $el['size']]])
                 ->toarray()
         ]);

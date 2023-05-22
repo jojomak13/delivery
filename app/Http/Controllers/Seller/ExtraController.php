@@ -31,7 +31,7 @@ class ExtraController extends Controller
 
         $data = $request->validate([
             'name' => 'required|max:255',
-            'price' => 'required|integer',
+            'price' => 'required|integer|min:1|max:10000',
             'image' => 'required|image',
         ]);
 
@@ -63,7 +63,7 @@ class ExtraController extends Controller
 
         $request->validate([
             'name' => 'required|max:255',
-            'price' => 'required|integer',
+            'price' => 'required|integer|min:1|max:10000',
             'image' => 'nullable|image',
         ]);
 

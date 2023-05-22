@@ -52,7 +52,7 @@ const removeSize = (id) => {
 
         <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
 
-            <div class="col-span-2 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="col-span-2 bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form @submit.prevent="save">
                         <div class="md:grid md:grid-cols-2 md:gap-2">

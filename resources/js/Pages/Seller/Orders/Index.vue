@@ -64,7 +64,7 @@ defineProps(['orders'])
                                         <span class="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800">{{ t('app.' + order.status) }}</span>
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        <div class="text-gray-900">{{ new Date(order.created_at).toDateString() }}</div>
+                                        <div class="text-gray-900">{{ new Date(order.created_at).toLocaleString() }}</div>
                                     </td>
                                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                         <Link :href="route('seller.orders.show', order)" class="text-indigo-600 hover:text-indigo-900">
