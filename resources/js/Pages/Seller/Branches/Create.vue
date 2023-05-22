@@ -27,12 +27,39 @@ const form  = useForm({
 const save = () => {
     form.post(route('seller.branches.store'))
 }
+
+const loadMap = () => {
+    ymaps.ready(() => {
+        const map = new ymaps.Map("map", {
+            center: [form.location.lat, form.location.long],
+            zoom: 10
+        });
+
+        let marker = new ymaps.Placemark(map.getCenter(), {}, {
+            draggable: true
+        });
+
+        map.geoObjects.add(marker);
+
+        marker.events.add("dragend", function (e) {
+            let target = e.get("target");
+            let coords = target.geometry.getCoordinates();
+
+            form.location.lat = coords[0];
+            form.location.long = coords[1];
+        });
+    });
+}
+
 onMounted(() => {
     navigator.geolocation.getCurrentPosition((position) => {
         form.location.lat = position.coords.latitude
         form.location.long = position.coords.longitude
+        loadMap()
     });
 })
+
+
 </script>
 
 <template>
@@ -84,6 +111,9 @@ onMounted(() => {
                             <TextArea id="address" type="text" class="mt-1 block w-full" v-model="form.address" />
                             <span class="text-gray-500 text-sm">{{ $t('app.textarea_hint') }}</span>
                             <InputError class="mt-2" :message="form.errors.address" />
+                        </div>
+                        <div class="md:col-span-2 mb-4">
+                            <div id="map" style="width: 100%; height: 400px;"></div>
                         </div>
                     </div>
                     <div class="text-right">

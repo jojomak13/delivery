@@ -39,5 +39,10 @@ return [
 
     'fcm' => [
         'server_token' => env('FCM_SERVER_TOKEN'),
-    ]
+    ],
+
+    'yandex' => [
+        'api_token' => env('YANDEX_API_TOKEN'),
+    ],
+
 ];

@@ -15,6 +15,8 @@
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
+
         @inertia
+        <script src="https://api-maps.yandex.com/2.1/?apikey={{ config('services.yandex.api_token') }}&lang=en_US" type="text/javascript"></script>
     </body>
 </html>
