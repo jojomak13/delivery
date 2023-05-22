@@ -18,12 +18,47 @@ const form  = useForm({
     phone: branch.phone,
     delivery_cost: branch.delivery_cost,
     delivery_period: branch.delivery_period,
-    delivery_distance: branch.delivery_distance
+    delivery_distance: branch.delivery_distance,
+    location: {
+        lat: branch.location.lat,
+        long: branch.location.long
+    }
 })
 
 const save = () => {
     form.patch(route('seller.branches.update', branch))
 }
+
+const loadMap = () => {
+    ymaps.ready(() => {
+        const map = new ymaps.Map("map", {
+            center: [form.location.lat, form.location.long],
+            zoom: 10
+        });
+
+        let marker = new ymaps.Placemark(map.getCenter(), {}, {
+            draggable: true
+        });
+
+        map.geoObjects.add(marker);
+
+        marker.events.add("dragend", function (e) {
+            let target = e.get("target");
+            let coords = target.geometry.getCoordinates();
+
+            form.location.lat = coords[0];
+            form.location.long = coords[1];
+        });
+    });
+}
+
+onMounted(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+        form.location.lat = position.coords.latitude
+        form.location.long = position.coords.longitude
+        loadMap()
+    });
+})
 </script>
 
 <template>
@@ -74,6 +109,10 @@ const save = () => {
                             <InputLabel for="address" :value="t('app.address')" />
                             <TextArea id="address" type="text" class="mt-1 block w-full cursor-not-allowed" v-model="branch.address" disabled />
                             <span class="text-gray-500 text-sm">{{ $t('app.textarea_hint') }}</span>
+                        </div>
+
+                        <div class="md:col-span-2 mb-4">
+                            <div id="map" class="w-full" style="height: 400px;"></div>
                         </div>
                     </div>
                     <div class="text-right">

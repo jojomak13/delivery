@@ -58,8 +58,6 @@ onMounted(() => {
         loadMap()
     });
 })
-
-
 </script>
 
 <template>
@@ -113,7 +111,7 @@ onMounted(() => {
                             <InputError class="mt-2" :message="form.errors.address" />
                         </div>
                         <div class="md:col-span-2 mb-4">
-                            <div id="map" style="width: 100%; height: 400px;"></div>
+                            <div id="map" class="w-full" style="height: 400px;"></div>
                         </div>
                     </div>
                     <div class="text-right">

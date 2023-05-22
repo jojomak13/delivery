@@ -29,6 +29,8 @@ class UpdateBranchRequest extends FormRequest
             'delivery_cost' => 'required',
             'delivery_period' => 'required',
             'delivery_distance' => 'required',
+            'location.lat' => 'required',
+            'location.long' => 'required',
         ];
     }
 }
