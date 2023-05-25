@@ -19,6 +19,7 @@ return [
     'yes' => 'Yes',
     'no' => 'No',
     'available' => 'Available',
+    'not_available' => 'Not Available',
     'expired' => 'Expired',
     'finished' => 'Finished',
     'already_registered' => 'Already registered?',

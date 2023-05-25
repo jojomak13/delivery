@@ -24,7 +24,7 @@ const form = useForm({
     category_id: bundle.category_id,
     description: bundle.description,
     allowed_items: bundle.allowed_items,
-    available: bundle.available? 'true' : 'false'
+    available: bundle.available
 })
 
 const save = () => {
@@ -119,8 +119,8 @@ const search = (search, loading) => {
                             <div class="md:col-span-1 mb-4">
                                 <InputLabel for="available" :value="t('app.available')"/>
                                 <SelectInput id="available" class="mt-1 block w-full" v-model="form.available">
-                                    <option value="true">{{ t('app.yes') }}</option>
-                                    <option value="false">{{ t('app.no') }}</option>
+                                    <option value="1">{{ t('app.yes') }}</option>
+                                    <option value="0">{{ t('app.no') }}</option>
                                 </SelectInput>
                                 <InputError class="mt-2" :message="form.errors.available"/>
                             </div>

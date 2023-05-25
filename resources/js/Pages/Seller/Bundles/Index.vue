@@ -65,8 +65,8 @@ const deleteProduct = (bundle) => {
                                         <div class="text-gray-900">{{ bundle.price }}</div>
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        <span v-if="bundle.available" class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">Available</span>
-                                        <span v-else class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">Not Available</span>
+                                        <span v-if="bundle.available" class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">{{ t('app.available') }}</span>
+                                        <span v-else class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">{{ t('app.not_available') }}</span>
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                         <div class="text-gray-900">{{ bundle.category.name }}</div>
