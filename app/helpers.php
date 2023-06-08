@@ -1,15 +1,20 @@
 <?php
 
-function distance($lat1, $lon1, $lat2, $lon2) {
-    if (($lat1 == $lat2) && ($lon1 == $lon2)) {
-        return 0;
-    }
+function distance($lat1, $lon1, $lat2, $lon2, $unit = 'km') {
+    $earthRadius = ($unit === 'km') ? 6371 : 3959; // Radius of the Earth in either kilometers or miles
 
-    $theta = $lon1 - $lon2;
-    $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
-    $dist = acos($dist);
-    $dist = rad2deg($dist);
-    $miles = $dist * 60 * 1.1515;
+    $lat1 = deg2rad($lat1);
+    $lon1 = deg2rad($lon1);
+    $lat2 = deg2rad($lat2);
+    $lon2 = deg2rad($lon2);
 
-    return ($miles * 1.609344);
+    $latDiff = $lat2 - $lat1;
+    $lonDiff = $lon2 - $lon1;
+
+    $a = sin($latDiff / 2) * sin($latDiff / 2) + cos($lat1) * cos($lat2) * sin($lonDiff / 2) * sin($lonDiff / 2);
+    $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+
+    $distance = $earthRadius * $c;
+
+    return $distance;
 }

@@ -85,7 +85,7 @@ return [
         'update' => 'Обновление пакета'
     ],
     'allowed_items' => 'Разрешенные продукты',
-    'delivery_distance' => 'Расстояние доставки',
+    'delivery_distance' => 'Расстояние доставки (км)',
     'types' => 'Типы',
     'seller' => [
         'title' => 'Продавцы',

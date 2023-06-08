@@ -85,7 +85,7 @@ return [
         'update' => 'Update Bundle'
     ],
     'allowed_items' => 'Allowed Products',
-    'delivery_distance' => 'Delivery Distance',
+    'delivery_distance' => 'Delivery Distance (KM)',
     'types' => 'Types',
     'seller' => [
         'title' => 'Sellers',

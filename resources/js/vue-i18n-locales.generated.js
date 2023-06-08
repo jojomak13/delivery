@@ -85,7 +85,7 @@ export default {
                 "update": "Update Bundle"
             },
             "allowed_items": "Allowed Products",
-            "delivery_distance": "Delivery Distance",
+            "delivery_distance": "Delivery Distance (KM)",
             "types": "Types",
             "seller": {
                 "title": "Sellers",
@@ -253,7 +253,7 @@ export default {
                 "update": "Обновление пакета"
             },
             "allowed_items": "Разрешенные продукты",
-            "delivery_distance": "Расстояние доставки",
+            "delivery_distance": "Расстояние доставки (км)",
             "types": "Типы",
             "seller": {
                 "title": "Продавцы",
