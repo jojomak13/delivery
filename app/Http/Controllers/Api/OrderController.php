@@ -51,6 +51,7 @@ class OrderController extends Controller
             'user_id' => $request->user()->id,
             'branch_id' => $data['branch_id'],
             'store_id' => $store->id,
+            'motes' => $request->input('notes')
         ]);
 
         $request->user()->cart->toQuery()->delete();

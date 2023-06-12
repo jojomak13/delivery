@@ -29,7 +29,8 @@ class CheckoutRequest extends FormRequest
             'location.street' => 'required|string|max:255',
             'location.floor_number' => 'required|string|max:255',
             'location.apartment_number' => 'required_unless:location.building_type,villa|string|max:255',
-            'location.phone_number' => 'required|string|max:255'
+            'location.phone_number' => 'required|string|max:255',
+            'notes' => 'nullable|string|max:1024',
         ];
     }
 }
