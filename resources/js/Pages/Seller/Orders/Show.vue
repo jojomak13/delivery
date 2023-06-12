@@ -4,6 +4,7 @@ import {Head, useForm} from '@inertiajs/inertia-vue3';
 import {useI18n} from "vue-i18n";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
+import TextArea from "@/Components/TextArea.vue";
 import SelectInput from "@/Components/SelectInput.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 
@@ -174,6 +175,12 @@ const save = () => {
                         <TextInput disabled id="total_price" type="text" class="mt-1 block w-full" :value="order.total_price" />
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-sm sm:rounded-lg mt-4">
+            <div class="p-6 bg-white border-b border-gray-200">
+                <TextArea disabled id="total_price" type="text" class="mt-1 block w-full" :value="order.notes" />
             </div>
         </div>
     </AuthenticatedLayout>
