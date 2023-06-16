@@ -37,8 +37,8 @@ class OrderNotification extends Notification
     public function toArray(object $notifiable): array
     {
         $data = [
-            'title' => __('app.order.notification.title', ['store' => $this->order->store->name]),
-            'body' => __('app.order.notification.body', ['status' => __('app.' . $this->order->status)])
+            'title' => __('app.order.notification.title', ['store' => $this->order->store->name], 'ru'),
+            'body' => __('app.order.notification.body', ['status' => __('app.' . $this->order->status)], 'ru')
         ];
 
         Http::asForm()
